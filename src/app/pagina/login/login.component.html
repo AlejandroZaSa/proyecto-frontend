@@ -1,0 +1,11 @@
+<form #f="ngForm" (ngSubmit)="login()">
+    <div>
+        <label>Correo electrónico: </label>
+        <input type="email" name="correo" required="true" email="true" maxlength="50" [(ngModel)]="loginDTO.email" />
+    </div>
+    <div>
+        <label>Contraseña: </label>
+        <input type="password" name="password" required="true" [(ngModel)]="loginDTO.password" />
+    </div>
+    <button type="submit" [disabled]="f.invalid">Iniciar Sesión</button>
+</form>

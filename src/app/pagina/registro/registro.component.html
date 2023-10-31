@@ -1,15 +1,15 @@
 <form #f="ngForm" (ngSubmit)="registrar()">
     <div>
         <label>Cédula: </label>
-        <input type="text" name="cedula" required="true" [(ngModel)]="registroPacienteDTO.cedula" />
+        <input type="text" name="cedula" required="true" maxlength="10" [(ngModel)]="registroPacienteDTO.cedula" />
     </div>
     <div>
         <label>Nombre: </label>
-        <input type="text" name="nombre" required="true" [(ngModel)]="registroPacienteDTO.nombre" />
+        <input type="text" name="nombre" required="true" maxlength="30"[(ngModel)]="registroPacienteDTO.nombre" />
     </div>
     <div>
         <label>Teléfono: </label>
-        <input type="text" name="telefono" required="true" [(ngModel)]="registroPacienteDTO.telefono" />
+        <input type="text" name="telefono" required="true" maxlength="10" [(ngModel)]="registroPacienteDTO.telefono" />
     </div>
     <div>
         <label>Foto: </label>
@@ -43,7 +43,7 @@
     </div>
     <div>
         <label>Correo electrónico: </label>
-        <input type="email" name="correo" required="true" email="true" [(ngModel)]="registroPacienteDTO.email" />
+        <input type="email" name="correo" required="true" email="true" maxlength="50" [(ngModel)]="registroPacienteDTO.email" />
     </div>
     <div>
         <label>Contraseña: </label>
