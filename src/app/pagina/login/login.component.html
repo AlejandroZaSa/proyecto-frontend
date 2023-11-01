@@ -1,4 +1,6 @@
 <form #f="ngForm" (ngSubmit)="login()">
+    
+    <h1>Login</h1>
     <div>
         <label>Correo electrónico: </label>
         <input type="email" name="correo" required="true" email="true" maxlength="50" [(ngModel)]="loginDTO.email" />

@@ -1,4 +1,5 @@
 <form #f="ngForm" (ngSubmit)="registrar()">
+     <h1>Registro Paciente</h1>
     <div>
         <label>Cédula: </label>
         <input type="text" name="cedula" required="true" maxlength="10" [(ngModel)]="registroPacienteDTO.cedula" />

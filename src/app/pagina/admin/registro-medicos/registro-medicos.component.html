@@ -1,1 +1,97 @@
-<p>registro-medicos works!</p>
+<form>
+    <h1>Registro Médicos</h1>
+    <div>
+        <label>Cédula:</label>
+        <input type="text" name="cedula" placeholder="Cédula">
+    </div>
+    <div>
+        <label>Nombre Completo:</label>
+        <input type="text" name="nombrecompleto" placeholder="Nombre Completo">
+    </div>
+    <div>
+        <label>Especialidad:</label>
+        <select name="especialidad">
+            <option value="Medicina General">Medicina General</option>
+            <option value="Pediatría">Pediatría</option>
+            <option value="Ginecología">Ginecología</option>
+            <option value="Cirugía">Cirugía</option>
+            <option value="Odontología">Odontología</option>
+            <option value="Psicología">Psicología</option>
+        </select>
+    </div>
+    <div>
+        <label>Ciudad:</label>
+        <select name="ciudad">
+            <option value="Bogotá">Bogotá</option>
+            <option value="Medellín">Medellín</option>
+            <option value="Cali">Cali</option>
+            <option value="Barranquilla">Barranquilla</option>
+            <option value="Cartagena">Cartagena</option>
+            <option value="Pereira">Pereira</option>
+        </select>
+    </div>
+    <div>
+        <label>Foto:</label>
+        <input type="file" name="foto">
+    </div>
+    <div>
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" placeholder="Teléfono">
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Email">
+    </div>
+    <div>
+        <label>Contraseña:</label>
+        <input type="password" name="contrasena" placeholder="Contraseña">
+    </div>
+    <div>
+        <label>Repite la contraseña:</label>
+        <input type="confirmaPassword" name="confirmaPassword" placeholder="Contraseña">
+    </div>
+    <input type="submit" value="Registrar">
+
+    <h3>Programar Horarios</h3>
+    <div>
+        <label>Día: </label>
+        <input type="radio" name="dia" value="lunes"> Lunes
+        <input type="radio" name="dia" value="martes"> Martes
+        <input type="radio" name="dia" value="miércoles"> Miércoles
+        <input type="radio" name="dia" value="jueves"> Jueves
+        <input type="radio" name="dia" value="viernes"> Viernes
+        <input type="radio" name="dia" value="sábado"> Sábado
+        <input type="radio" name="dia" value="domingo"> Domingo
+    </div>
+    <div>
+        <input type="text" name="horainicio" placeholder="Hora Inicio">
+    </div>
+    <div> 
+        <input type="text" name="horafin" placeholder="Hora Fin">
+    </div>
+
+    <input type="submit" value="Agregar">
+    <input type="submit" value="Actualizar">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Día</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jueves</td>
+                <td>17:30</td>
+                <td>19:30</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <input type="submit" value="Agregar Médico">
+    <input type="submit" value="Actualizar Médico">
+    <input type="submit" value="Ver Médicos">
+</form>

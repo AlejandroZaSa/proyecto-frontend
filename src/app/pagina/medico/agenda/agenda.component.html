@@ -1,1 +1,49 @@
-<p>agenda works!</p>
+<form>
+    <h2>Agenda de Citas</h2>
+
+      <label>Elija la fecha: </label>
+      <input type="date" name="fecha" placeholder="Fecha">
+
+      <input type="submit" value="Buscar">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Motivo</th>
+          <th>Consulta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>María López</td>
+          <td>2023-11-01</td>
+          <td>10:00 AM</td>
+          <td>Consulta general</td>
+          <td>
+            <button type="submit">Atender</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Pedro Rodríguez</td>
+          <td>2023-11-02</td>
+          <td>12:00 PM</td>
+          <td>Consulta de pediatría</td>
+          <td>
+            <button type="submit">Atender</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Laura Sánchez</td>
+          <td>2023-11-03</td>
+          <td>2:00 PM</td>
+          <td>Consulta de ginecología</td>
+          <td>
+            <button type="submit">Atender</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</form>

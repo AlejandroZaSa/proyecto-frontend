@@ -1,1 +1,37 @@
-<p>consultas-paciente works!</p>
+<form>
+    <h2>Historico de consultas</h2>
+
+    <select name="medico">
+        <option value="1">Dr. Carlos</option>
+        <option value="2">Dr. Nohemy</option>
+        <option value="3">Dr. Camila</option>
+    </select>
+    <input type="date" name="fecha" placeholder="Fecha">
+
+    <input type="submit" value="Buscar">
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Medico</th>
+                <th>Notas del Medico</th>
+                <th>Diagnostico</th>
+                <th>Tratamiento</th>
+                <th>Sintomas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>María López</td>
+                <td>2023-11-01</td>
+                <td>xxxxxx</td>
+                <td>xxxxxx</td>
+                <td>
+                    <button type="submit">Ver tratamiento</button>
+                </td>
+                <td>xxxxxxxxx</td>
+            </tr>
+        </tbody>
+    </table>
+</form>

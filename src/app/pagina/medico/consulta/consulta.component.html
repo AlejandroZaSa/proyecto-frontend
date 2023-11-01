@@ -1,1 +1,98 @@
-<p>consulta works!</p>
+<form>
+    <h2>Consulta</h2>
+
+    <label>Elija la de la consulta: </label>
+    <input type="date" name="fecha" placeholder="Fecha">
+
+    <input type="submit" value="Buscar">
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Fecha</th>
+                <th>Notas del Medico</th>
+                <th>Diagnostico</th>
+                <th>Tratamiento</th>
+                <th>Sintomas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>María López</td>
+                <td>2023-11-01</td>
+                <td>xxxxxx</td>
+                <td>xxxxxx</td>
+                <td>
+                    <button type="submit">Ver tratamiento</button>
+                </td>
+                <td>xxxxxxxxx</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <label for="notas">Notas del médico</label>
+        <textarea name="notas" id="notas"></textarea>
+    </div>
+    <div>
+        <label for="diagnostico">Diagnóstico</label>
+        <textarea name="diagnostico" id="diagnostico"></textarea>
+    </div>
+
+    <div>
+        <label for="tratamiento">Tratamiento</label>
+        <div>
+            <label for="observaciones">Observaciones</label>
+            <textarea name="observaciones" id="observaciones"></textarea>
+            
+        </div>
+    </div>
+
+    <div>
+        <label for="medicamentos">Selecciona los medicamentos</label>
+        <div>
+            <select name="medicamentos">
+                <option value="1">Aceta</option>
+                <option value="2">Ibu</option>
+                <option value="3">Metro</option>
+            </select>
+            <input type="text" placeholder="Ingrese la dosis">
+            <input type="submit" value="Agregar">
+            <input type="submit" value="Actualizar">
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                           
+                            <th>Medicamento</th>
+                            <th>Dosis</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>xxxxxx</td>
+                            <td>xxxxxx</td>
+                            <td>xxxxxxxxx</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </div>
+            <div>
+                <input type="submit" value="Eliminar"> 
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <label for="sintomas">Sintomas</label>
+        <textarea name="sintomas" id="sintomas"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Guardar Historia">
+        <input type="submit" value="Generar Factura">
+    </div>
+</form>
