@@ -1,37 +1,57 @@
-<form>
-    <h2>Historico de consultas</h2>
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0">Historial de consultas</h5>
+    </div>
+    <div class="card-body p-5">
+        <form>
+            <div class="mb-3 row">
+                <div class="col-sm-10">
+                    <select name="medico" required class="form-select">
+                        <option value="" selected>Seleccione el nombre de un médico</option>
+                        <option value="1">Dr. Carlos</option>
+                        <option value="2">Dr. Nohemy</option>
+                        <option value="3">Dr. Camila</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-10">
+                      <input type="date" name="fecha" class="form-control"  placeholder="Fecha">
+                </div>              
+            </div>
 
-    <select name="medico">
-        <option value="1">Dr. Carlos</option>
-        <option value="2">Dr. Nohemy</option>
-        <option value="3">Dr. Camila</option>
-    </select>
-    <input type="date" name="fecha" placeholder="Fecha">
 
-    <input type="submit" value="Buscar">
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>Medico</th>
-                <th>Notas del Medico</th>
-                <th>Diagnostico</th>
-                <th>Tratamiento</th>
-                <th>Sintomas</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>María López</td>
-                <td>2023-11-01</td>
-                <td>xxxxxx</td>
-                <td>xxxxxx</td>
-                <td>
-                    <button type="submit">Ver tratamiento</button>
-                </td>
-                <td>xxxxxxxxx</td>
-            </tr>
-        </tbody>
-    </table>
-</form>
+            <input class="btn btn-primary" type="submit" value="Buscar">
+
+            <table class="table">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col" >Medico</th>
+                        <th scope="col" >Fecha</th>
+                        <th scope="col" >Notas del Medico</th>
+                        <th scope="col" >Diagnostico</th>
+                        <th scope="col" >Tratamiento</th>
+                        <th scope="col" >Sintomas</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider text-center">
+                   
+                    <tr>
+                        
+                        <td>María López</td>
+                        <td>2023-11-01</td>
+                        <td>xxxxxx</td>
+                        <td>xxxxxx</td>
+                        <td>
+                            <div style="display: flex; justify-content: center">
+                                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-eye"></i></button>
+                            </div>
+                        </td>
+                        <td>xxxxxxxxx</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

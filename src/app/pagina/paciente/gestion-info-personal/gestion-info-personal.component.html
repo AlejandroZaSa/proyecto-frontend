@@ -1,59 +1,104 @@
-<form>
-    <h1>Registro Médicos</h1>
-    <div>
-        <label>Nombre Completo:</label>
-        <input type="text" name="nombrecompleto" placeholder="Nombre Completo">
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0"><i class="fa-solid fa-user-plus me-3"></i>Información personal</h5>
     </div>
-    <div>
-        <label>Cédula:</label>
-        <input type="text" name="cedula" placeholder="Cédula">
+    <div class="card-body p-5">
+        <form #f="ngForm" (ngSubmit)="actualizar()">
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Cédula: </label>
+                <div class="col-sm-10">
+                    <input #cedula="ngModel"
+                        [ngClass]="cedula.invalid && (cedula.dirty || cedula.touched) ? 'is-invalid' : ''" type="text"
+                        name="cedula" class="form-control" required [(ngModel)]="pacienteActualizadoDTO.cedula" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Nombre: </label>
+                <div class="col-sm-10">
+                    <input #nombre="ngModel"
+                        [ngClass]="nombre.invalid && (nombre.dirty || nombre.touched) ? 'is-invalid' : ''" type="text"
+                        name="nombre" class="form-control" required [(ngModel)]="pacienteActualizadoDTO.nombre" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Teléfono: </label>
+                <div class="col-sm-10">
+                    <input #telefono="ngModel"
+                        [ngClass]="telefono.invalid && (telefono.dirty || telefono.touched) ? 'is-invalid' : ''"
+                        type="text" name="telefono" class="form-control" required="true" maxlength="10"
+                        [(ngModel)]="pacienteActualizadoDTO.telefono" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Foto: </label>
+                <div class="col-sm-10">
+                    <input type="file" name="urlFoto" class="form-control" required (change)="onFileChange($event)" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Ciudad: </label>
+                <div class="col-sm-10">
+                    <select name="ciudad" required class="form-select" [(ngModel)]="pacienteActualizadoDTO.ciudad">
+                        <option value="" selected>Seleccione una ciudad</option>
+                        <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Fecha de nacimiento: </label>
+                <div class="col-sm-10">
+                    <input type="date" name="fechaNacimiento" required="true" class="form-control"
+                        [(ngModel)]="pacienteActualizadoDTO.fechaNacimiento" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Alergias: </label>
+                <div class="col-sm-10">
+                    <input type="text" name="alergias" #alergias="ngModel"
+                        [ngClass]="alergias.invalid && (alergias.dirty || alergias.touched) ? 'is-invalid' : ''"
+                        required="true" class="form-control" [(ngModel)]="pacienteActualizadoDTO.alergias" />
+                </div>
+
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">EPS: </label>
+                <div class="col-sm-10">
+                    <select name="eps" required class="form-select" [(ngModel)]="pacienteActualizadoDTO.eps">
+                        <option value="" selected>Seleccione una EPS</option>
+                        <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Tipo Sangre: </label>
+                <div class="col-sm-10">
+                    <select name="tipo_sangre" required class="form-select"
+                        [(ngModel)]="pacienteActualizadoDTO.tipoSangre">
+                        <option value="" selected>Seleccione un tipo de sangre</option>
+                        <option [value]="item" *ngFor="let item of tipo_sangre; index as i">{{item}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Correo electrónico: </label>
+                <div class="col-sm-10">
+                    <input type="email" name="correo" #correo="ngModel"
+                        [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''"
+                        required="true" class="form-control" email="true" maxlength="50"
+                        [(ngModel)]="pacienteActualizadoDTO.email" />
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+                Actualizar información
+            </button>
+            <button class="btn btn-primary" type="submit">
+                Eliminar cuenta
+            </button>
+        </form>
     </div>
-    <div>
-        <label>Teléfono:</label>
-        <input type="text" name="telefono" placeholder="Teléfono">
-    </div> 
-    <div>
-        <label>Foto:</label>
-        <input type="file" name="foto">
-    </div>
-    <div>
-        <label>Email:</label>
-        <input type="text" name="email">
-    </div>
-    <div>
-        <label>Fecha de Nacimiento:</label>
-        <input type="date" name="fechaNacimiento" placeholder="Selecciona">
-    </div>   
-    <div>
-        <label>Ciudad:</label>
-        <select name="ciudad">
-            <option value="Bogotá">Bogotá</option>
-            <option value="Medellín">Medellín</option>
-            <option value="Cali">Cali</option>
-            <option value="Barranquilla">Barranquilla</option>
-            <option value="Cartagena">Cartagena</option>
-            <option value="Pereira">Pereira</option>
-        </select>
-    </div>
-    <div>
-        <label>Eps:</label>
-        <select name="eps">
-            <option value="sura">Sura</option>
-        </select>
-    </div>
-    <div>
-        <label>Tipo de Sangre:</label>
-        <select name="tipo_sangre">
-            <option value="a+">A+</option>
-        </select>
-    </div>
-    <div>
-        <label>Alergias:</label>
-        <input type="text" placeholder="Ingrese sus Alergias">
-    </div>
-    <div>
-        <input type="submit" value="Actualizar">
-        <input type="submit" value="Eliminar Cuenta">
-    </div> 
-   
-</form>
+</div>

@@ -1,13 +1,29 @@
-<form #f="ngForm" (ngSubmit)="login()">
-    
-    <h1>Login</h1>
-    <div>
-        <label>Correo electrónico: </label>
-        <input type="email" name="correo" required="true" email="true" maxlength="50" [(ngModel)]="loginDTO.email" />
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0"><i class="fa-duotone fa-right-to-bracket" style="--fa-primary-color: #000000; --fa-secondary-color: #000000;"></i>
+            Login</h5>
     </div>
-    <div>
-        <label>Contraseña: </label>
-        <input type="password" name="password" required="true" [(ngModel)]="loginDTO.password" />
+    <div class="card-body p-5">
+        <form #f="ngForm" (ngSubmit)="login()">
+            <div class="mb-3 row">
+                <label  class="col-sm-2 col-form-label">Correo electrónico: </label>
+                <div class="col-sm-10">    
+                        <input type="email" name="correo" #email="ngModel"
+                        [ngClass]="email.invalid && (email.dirty || email.touched) ? 'is-invalid' : ''"required="true" email="true" maxlength="50" [(ngModel)]="loginDTO.email" />
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label  class="col-sm-2 col-form-label">Contraseña:</label>
+                <div class="col-sm-10">    
+                        <input type="password" name="password" #password="ngModel"
+                        [ngClass]="password.invalid && (password.dirty || password.touched) ? 'is-invalid' : ''"required="true"  [(ngModel)]="loginDTO.password" />
+                </div>
+            </div>
+           
+            <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+                Iniciar sesión
+            </button>
+        </form>
     </div>
-    <button type="submit" [disabled]="f.invalid">Iniciar Sesión</button>
-</form>
+</div>

@@ -1,66 +1,85 @@
-<form>
-    <h1>Pedir cita</h1>
-    <label>Elija una especilidad:  </label>
-    <select name="especialidad">
-        <option value="1">Pediatria</option>
-        <option value="2">Cardiologia</option>
-        <option value="3">Oftalomologo Oncologo</option>
-    </select>
-    <label> Elija la fecha de la cita:  </label>
-    <input type="date">
-    <button type="submit">Buscar</button>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre Especialista</th>
-                <th>Hora</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Dr.Felipe</td>
-                <td>07:30</td>
-
-            </tr>
-
-        </tbody>
-    </table>
-
-    <h3>Motivo</h3>
-    <textarea width="200" height="100" name="motivo"></textarea>
-    <div>
-        <button type="submit">Pedir cita</button>
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0">Pedir cita</h5>
     </div>
-
-    <label> Elija la fecha de la cita:  </label>
-    <input type="date">
-    <button type="submit">Buscar</button>
-
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Motivo</th>
-                    <th>Fecha de creacion</th>
-                    <th>Fecha de la cita</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
-                    <th>Medico</th>
-                </tr>
+    <div class="card-body p-5">
+        <form>
+            <select name="especialidad">
+                <option value="1">Pediatria</option>
+                <option value="2">Cardiologia</option>
+                <option value="3">Oftalomologo Oncologo</option>
+            </select>
             
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Motivo</td>
-                    <td>Fecha de creacion</td>
-                    <td>Fecha de la cita</td>
-                    <td>Hora</td>
-                    <td>Estado</td>
-                    <td>Medico</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                      <input type="date" name="fecha" class="form-control"  placeholder="Fecha">
+                </div>              
+            </div>
+            <br>
+            <button class="btn-primary" type="submit">Buscar</button>
+        
+            <table class="table text-center">
+                <thead >
+                    <tr>
+                        <th>Nombre Especialista</th>
+                        <th>Hora</th>
+        
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider text-center">
+                    <tr>
+                        <td>Dr.Felipe</td>
+                        <td>07:30</td>
+        
+                    </tr>
+        
+                </tbody>
+            </table>
+        
+            <h3>Motivo</h3>
+            <textarea width="200" height="100" name="motivo"></textarea>
+            <div class="text-center">
+                <button  class="btn btn-primary" type="submit">Pedir cita</button>
+            </div>
+        
+            <br>
+            
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                      <input type="date" name="fecha" class="form-control"  placeholder="Fecha">
+                </div>              
+            </div>
+            
+            <div>
+                <button  class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+            
+            <br>
+            <div>
+                <table class="table">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Motivo</th>
+                            <th>Fecha de creacion</th>
+                            <th>Fecha de la cita</th>
+                            <th>Hora</th>
+                            <th>Estado</th>
+                            <th>Medico</th>
+                        </tr>
+                    
+                    </thead>
+                    <tbody class="table-group-divider text-center">
+                        <tr>
+                            <td>Motivo</td>
+                            <td>Fecha de creacion</td>
+                            <td>Fecha de la cita</td>
+                            <td>Hora</td>
+                            <td>Estado</td>
+                            <td>Medico</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
     </div>
-</form>
+</div>

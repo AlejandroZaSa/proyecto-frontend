@@ -11,6 +11,7 @@ export class RegistroComponent {
   registroPacienteDTO: RegistroPacienteDTO;
   ciudades: string[];
   tipo_sangre: string[];
+  
   archivos!: FileList;
 
   constructor() {
@@ -19,6 +20,7 @@ export class RegistroComponent {
     this.cargarCiudades();
     this.tipo_sangre = [];
     this.cargarTipoSangre();
+  
   }
 
   public registrar() {
@@ -50,11 +52,9 @@ export class RegistroComponent {
   }
 
   public onFileChange(event: any) {
-    this.archivos = event.target.files;
 
     if (event.target.files.length > 0) {
-      const files = event.target.files;
-      console.log(files);
+        this.archivos = event.target.files;
     }
   }
 
