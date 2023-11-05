@@ -1,15 +1,26 @@
-<form>
-    <h1>PQRS</h1>
-    <h3>Filtro por Estado</h3>
-    <select name="estado">
-        <option value="1">Pendiente</option>
-        <option value="2">En curso</option>
-        <option value="3">Resuelto</option>
-    </select>
-    <button type="submit">Filtrar</button>
 
-    <table>
-        <thead>
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0">Pqrs</h5>
+    </div>
+    <div class="card-body p-5">
+<form>
+    
+    <h5>Filtro por Estado</h5>
+    <div class="mb-3 row">
+        <div class="col-sm-10">
+            <select name="estado" class="form-select">
+                <option value="1">Pendiente</option>
+                <option value="2">En curso</option>
+                <option value="3">Resuelto</option>
+            </select>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Filtrar</button>
+
+    <table class="table">
+        <thead class="text-center">
             <tr>
                 <th>Código de Radicación</th>
                 <th>Detalle</th>
@@ -17,7 +28,7 @@
                 <th>Estado</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider text-center">
             <tr>
                 <td>1234567890</td>
                 <td>Consulta médica</td>
@@ -39,24 +50,29 @@
         </tbody>
     </table>
 
-    <h3>Cambiar estado</h3>
-    <select name="estado">
-        <option value="1">Pendiente</option>
-        <option value="2">En curso</option>
-        <option value="3">Resuelto</option>
-    </select>
-    <button type="submit">Actualizar estado</button>
+    <h5>Cambiar estado</h5>
+     <div class="mb-3 row">
+                <div class="col-sm-10">
+                    <select name="estado" class="form-select">
+                        <option value="1">Pendiente</option>
+                        <option value="2">En curso</option>
+                        <option value="3">Resuelto</option>
+                    </select>
+                </div>
+            </div>
+   
+    <button class="btn btn-primary" type="submit">Actualizar estado</button>
 
-    <h3>Consulta</h3>
+    <h5>Consulta</h5>
     <textarea  width="200" height="100" name="consulta" a ></textarea>
 
-    <h3>Historial de mensajes</h3>
+    <h5>Historial de mensajes</h5>
     <textarea   width="200" height="100" name="historial-mensajes"></textarea>
 
-    <h3>Respuesta</h3>
+    <h5>Respuesta</h5>
     <textarea  width="200" height="100" name="mensaje"></textarea>
     <div>
-        <button type="submit">Enviar</button>
+        <button class="btn btn-primary" type="submit">Enviar</button>
     </div>
 
 </form>

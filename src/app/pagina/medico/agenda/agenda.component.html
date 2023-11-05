@@ -1,49 +1,65 @@
-<form>
-    <h2>Agenda de Citas</h2>
+<div class="card">
+  <div class="card-header ps-5 pt-4 pb-4">
+    <h5 class="mb-0">Agenda de citas</h5>
+  </div>
+  <div class="card-body p-5">
+    <form>
 
-      <label>Elija la fecha: </label>
-      <input type="date" name="fecha" placeholder="Fecha">
+      <div class="mb-3 row">
+        <div class="col-sm-4">
+          <input type="date" name="fecha" class="form-control" >
+        </div>
+      </div>
 
-      <input type="submit" value="Buscar">
+      <input class="btn btn-primary" type="submit" value="Buscar">
 
-    <table>
-      <thead>
-        <tr>
-          <th>Paciente</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Motivo</th>
-          <th>Consulta</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>María López</td>
-          <td>2023-11-01</td>
-          <td>10:00 AM</td>
-          <td>Consulta general</td>
-          <td>
-            <button type="submit">Atender</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Pedro Rodríguez</td>
-          <td>2023-11-02</td>
-          <td>12:00 PM</td>
-          <td>Consulta de pediatría</td>
-          <td>
-            <button type="submit">Atender</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Laura Sánchez</td>
-          <td>2023-11-03</td>
-          <td>2:00 PM</td>
-          <td>Consulta de ginecología</td>
-          <td>
-            <button type="submit">Atender</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</form>
+      <table class="table">
+        <thead class="text-center">
+          <tr>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Motivo</th>
+            <th>Consulta</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider text-center">
+          <tr>
+            <td>María López</td>
+            <td>2023-11-01</td>
+            <td>10:00 AM</td>
+            <td>Consulta general</td>
+            <td>
+              <div style="display: flex; justify-content: center">
+                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
+              </div>
+            </td>
+
+          </tr>
+          <tr>
+            <td>Pedro Rodríguez</td>
+            <td>2023-11-02</td>
+            <td>12:00 PM</td>
+            <td>Consulta de pediatría</td>
+            <td>
+              <div style="display: flex; justify-content: center">
+                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Laura Sánchez</td>
+            <td>2023-11-03</td>
+            <td>2:00 PM</td>
+            <td>Consulta de ginecología</td>
+            <td>
+              <div style="display: flex; justify-content: center">
+                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>

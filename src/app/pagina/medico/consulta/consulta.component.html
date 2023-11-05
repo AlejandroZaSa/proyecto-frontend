@@ -1,77 +1,95 @@
-<form>
-    <h2>Consulta</h2>
-
-    <label>Elija la de la consulta: </label>
-    <input type="date" name="fecha" placeholder="Fecha">
-
-    <input type="submit" value="Buscar">
-
-
-    <table>
-        <thead>
-            <tr>
-                <th>Paciente</th>
-                <th>Fecha</th>
-                <th>Notas del Medico</th>
-                <th>Diagnostico</th>
-                <th>Tratamiento</th>
-                <th>Sintomas</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>María López</td>
-                <td>2023-11-01</td>
-                <td>xxxxxx</td>
-                <td>xxxxxx</td>
-                <td>
-                    <button type="submit">Ver tratamiento</button>
-                </td>
-                <td>xxxxxxxxx</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div>
-        <label for="notas">Notas del médico</label>
-        <textarea name="notas" id="notas"></textarea>
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0">Consulta</h5>
     </div>
-    <div>
-        <label for="diagnostico">Diagnóstico</label>
-        <textarea name="diagnostico" id="diagnostico"></textarea>
-    </div>
+    <div class="card-body p-5">
+        <form>
 
-    <div>
-        <label for="tratamiento">Tratamiento</label>
-        <div>
-            <label for="observaciones">Observaciones</label>
-            <textarea name="observaciones" id="observaciones"></textarea>
-            
-        </div>
-    </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Elija la fecha de la consulta: </label>
+                <div class="col-sm-3">
+                    <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                </div>
+            </div>
 
-    <div>
-        <label for="medicamentos">Selecciona los medicamentos</label>
-        <div>
-            <select name="medicamentos">
-                <option value="1">Aceta</option>
-                <option value="2">Ibu</option>
-                <option value="3">Metro</option>
-            </select>
-            <input type="text" placeholder="Ingrese la dosis">
-            <input type="submit" value="Agregar">
-            <input type="submit" value="Actualizar">
+            <input class="btn btn-primary" type="submit" value="Buscar">
+
+            <br>
+            <table class="table">
+                <thead class="text-center">
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Fecha</th>
+                        <th>Notas del Medico</th>
+                        <th>Diagnostico</th>
+                        <th>Tratamiento</th>
+                        <th>Sintomas</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider text-center">
+                    <tr>
+                        <td>María López</td>
+                        <td>2023-11-01</td>
+                        <td>xxxxxx</td>
+                        <td>xxxxxx</td>
+                        <td>
+                            <div style="display: flex; justify-content: center">
+                                <button type="submit" class="btn btn-outline-none"><i
+                                        class="fa-solid fa-eye"></i></button>
+                            </div>
+                        </td>
+                        <td>xxxxxxxxx</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div>
-                <table>
-                    <thead>
+                <label class="col-sm-2 col-form-label" for="notas">Notas del médico</label>
+                <textarea name="notas" id="notas"></textarea>
+            </div>
+            <div>
+                <label class="col-sm-2 col-form-label" for="diagnostico">Diagnóstico</label>
+                <textarea name="diagnostico" id="diagnostico"></textarea>
+            </div>
+
+            <div>
+                <label class="col-sm-2 col-form-label" for="tratamiento">Tratamiento</label>
+                <div>
+                    <label class="col-sm-2 col-form-label" for="observaciones">Observaciones</label>
+                    <textarea name="observaciones" id="observaciones"></textarea>
+
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="medicamentos">Selecciona los medicamentos</label>
+                <div class="col-sm-3">
+                    <select name="medicamentos" class="form-select">
+                        <option value="1">Aceta</option>
+                        <option value="2">Ibu</option>
+                        <option value="3">Metro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Ingrese la dosis">
+                </div>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Agregar">
+            <input class="btn btn-primary" type="submit" value="Actualizar">
+            <div>
+                <table class="table">
+                    <thead class="text-center">
                         <tr>
-                           
+
                             <th>Medicamento</th>
                             <th>Dosis</th>
                             <th>Observaciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center table-group-divider">
                         <tr>
                             <td>xxxxxx</td>
                             <td>xxxxxx</td>
@@ -79,20 +97,21 @@
                         </tr>
                     </tbody>
                 </table>
-            
+
             </div>
             <div>
-                <input type="submit" value="Eliminar"> 
+                <input class="btn btn-primary" type="submit" value="Eliminar">
             </div>
 
-        </div>
+
+            <div>
+                <label class="col-sm-2 col-form-label" for="sintomas">Sintomas</label>
+                <textarea name="sintomas" id="sintomas"></textarea>
+            </div>
+            <div>
+                <input class="btn btn-primary" type="submit" value="Guardar Historia">
+                <input class="btn btn-primary" type="submit" value="Generar Factura">
+            </div>
+        </form>
     </div>
-    <div>
-        <label for="sintomas">Sintomas</label>
-        <textarea name="sintomas" id="sintomas"></textarea>
-    </div>
-    <div>
-        <input type="submit" value="Guardar Historia">
-        <input type="submit" value="Generar Factura">
-    </div>
-</form>
+</div>

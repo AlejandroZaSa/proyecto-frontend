@@ -4,56 +4,60 @@
     </div>
     <div class="card-body p-5">
         <form>
-            <select name="especialidad">
-                <option value="1">Pediatria</option>
-                <option value="2">Cardiologia</option>
-                <option value="3">Oftalomologo Oncologo</option>
-            </select>
-            
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                      <input type="date" name="fecha" class="form-control"  placeholder="Fecha">
-                </div>              
+                    <select name="especialidad" class="form-select">
+                        <option value="1">Pediatria</option>
+                        <option value="2">Cardiologia</option>
+                        <option value="3">Oftalomologo Oncologo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                    <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                </div>
             </div>
             <br>
             <button class="btn-primary" type="submit">Buscar</button>
-        
+
             <table class="table text-center">
-                <thead >
+                <thead>
                     <tr>
                         <th>Nombre Especialista</th>
                         <th>Hora</th>
-        
+
                     </tr>
                 </thead>
                 <tbody class="table-group-divider text-center">
                     <tr>
                         <td>Dr.Felipe</td>
                         <td>07:30</td>
-        
+
                     </tr>
-        
+
                 </tbody>
             </table>
-        
+
             <h3>Motivo</h3>
             <textarea width="200" height="100" name="motivo"></textarea>
             <div class="text-center">
-                <button  class="btn btn-primary" type="submit">Pedir cita</button>
+                <button class="btn btn-primary" type="submit">Pedir cita</button>
             </div>
-        
+
             <br>
-            
+
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                      <input type="date" name="fecha" class="form-control"  placeholder="Fecha">
-                </div>              
+                    <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                </div>
             </div>
-            
+
             <div>
-                <button  class="btn btn-primary" type="submit">Buscar</button>
+                <button class="btn btn-primary" type="submit">Buscar</button>
             </div>
-            
+
             <br>
             <div>
                 <table class="table">
@@ -66,7 +70,7 @@
                             <th>Estado</th>
                             <th>Medico</th>
                         </tr>
-                    
+
                     </thead>
                     <tbody class="table-group-divider text-center">
                         <tr>

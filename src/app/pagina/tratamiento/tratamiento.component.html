@@ -1,28 +1,38 @@
-<form>
-    <h1>
-        Tratamiento
-    </h1>
-    <label> Ingrese el nombre del medicamento:  </label>
-    <input type="text" placeholder="Ingrese el nombre del medicamento">
-    <button type="submit">Buscar</button>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Medicamento</th>
-                    <th>Dosis</th>
-                    <th>Observaciones</th>
-                 
-            
-            </thead>
-            <tbody>
-                <tr>
-                   
-                    <td>Carboximetil</td>
-                    <td>1</td>
-                    <td>Ninguna</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0">Tratamiento</h5>
     </div>
-</form>
+    <div class="card-body p-5">
+        <form>
+             <div class="mb-3 row">
+                <label  class="col-sm-2 col-form-label"> Ingrese el nombre del medicamento:  </label>
+                <div class="col-sm-4">
+                    <input class="form-control"  type="text">
+                </div>
+             </div>
+            <button class="btn btn-primary" type="submit">Buscar</button>
+            <div>
+                <table class="table">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Medicamento</th>
+                            <th>Dosis</th>
+                            <th>Observaciones</th>
+                         
+                    
+                    </thead>
+                    <tbody class="table-group-divider text-center">
+                        <tr>
+                           
+                            <td>Carboximetil</td>
+                            <td>1</td>
+                            <td>Ninguna</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        
+    </div>
+    </div>
+
