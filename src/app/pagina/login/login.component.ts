@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginDTO } from 'src/app/modelo/login-dto';
+import { LoginDTO } from 'src/app/modelo/clinica/login-dto';
 
 @Component({
   selector: 'app-login',

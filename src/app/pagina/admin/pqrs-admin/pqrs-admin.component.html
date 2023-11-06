@@ -1,57 +1,12 @@
-
 <div class="card">
     <div class="card-header ps-5 pt-4 pb-4">
         <h5 class="mb-0">Pqrs</h5>
     </div>
     <div class="card-body p-5">
-<form>
-    
-    <h5>Filtro por Estado</h5>
-    <div class="mb-3 row">
-        <div class="col-sm-10">
-            <select name="estado" class="form-select">
-                <option value="1">Pendiente</option>
-                <option value="2">En curso</option>
-                <option value="3">Resuelto</option>
-            </select>
-        </div>
-    </div>
-    
-    <button class="btn btn-primary" type="submit">Filtrar</button>
+        <form>
 
-    <table class="table">
-        <thead class="text-center">
-            <tr>
-                <th>Código de Radicación</th>
-                <th>Detalle</th>
-                <th>Fecha de creación</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider text-center">
-            <tr>
-                <td>1234567890</td>
-                <td>Consulta médica</td>
-                <td>2023-07-20</td>
-                <td>Pendiente</td>
-            </tr>
-            <tr>
-                <td>9876543210</td>
-                <td>Solicitud de reembolso</td>
-                <td>2023-08-03</td>
-                <td>En curso</td>
-            </tr>
-            <tr>
-                <td>6543210987</td>
-                <td>Queja</td>
-                <td>2023-09-10</td>
-                <td>Resuelto</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h5>Cambiar estado</h5>
-     <div class="mb-3 row">
+            <h5>Filtro por Estado</h5>
+            <div class="mb-3 row">
                 <div class="col-sm-10">
                     <select name="estado" class="form-select">
                         <option value="1">Pendiente</option>
@@ -60,19 +15,73 @@
                     </select>
                 </div>
             </div>
-   
-    <button class="btn btn-primary" type="submit">Actualizar estado</button>
 
-    <h5>Consulta</h5>
-    <textarea  width="200" height="100" name="consulta" a ></textarea>
+            <button class="btn btn-primary" type="submit">Filtrar</button>
 
-    <h5>Historial de mensajes</h5>
-    <textarea   width="200" height="100" name="historial-mensajes"></textarea>
+            <table class="table">
+                <thead class="text-center">
+                    <tr>
+                        <th>Código de Radicación</th>
+                        <th>Detalle</th>
+                        <th>Fecha de creación</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider text-center">
+                    <tr *ngFor="let item of pqrs">
+                        <td>
+                            <p>{{item.codigoRadicacion}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.detalle}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.fecha}}</p>
+                        </td>
+                        <td><span [ngClass]="item.estadoPqrs == 'ACTIVO' ? 'text-bg-warning' :
 
-    <h5>Respuesta</h5>
-    <textarea  width="200" height="100" name="mensaje"></textarea>
-    <div>
-        <button class="btn btn-primary" type="submit">Enviar</button>
-    </div>
+'text-bg-success'" class="badge">{{item.estadoPqrs}}</span></td>
 
-</form>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>Cambiar estado</h5>
+            <div class="mb-3 row">
+                <div class="col-sm-10">
+                    <select name="estado" class="form-select">
+                        <option value="1">Pendiente</option>
+                        <option value="2">En curso</option>
+                        <option value="3">Resuelto</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Actualizar estado</button>
+
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Consulta: </label>
+                <div class="col-sm-10">
+                    <textarea width="200" height="100" class="form-control" name="consulta" a></textarea>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Historial de mensajes: </label>
+                <div class="col-sm-10">
+                    <textarea width="200" height="100" class="form-control" name="historial-mensajes"></textarea>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Respuesta: </label>
+                <div class="col-sm-10">
+                    <textarea width="200" height="100" class="form-control" name="mensaje"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+
+        </form>

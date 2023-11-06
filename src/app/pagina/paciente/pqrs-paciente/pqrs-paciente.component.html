@@ -3,81 +3,106 @@
         <h5 class="mb-0">Pqrs paciente</h5>
     </div>
     <div class="card-body p-5">
-        <form>
+        <form #f="ngForm" (ngSubmit)="crearPqrs()">
 
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                      <input type="date" name="fecha" class="form-control"  placeholder="Fecha">
-                </div>              
+                    <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                </div>
             </div>
 
             <input class="btn btn-primary" type="submit" value="Buscar">
-        
+
             <table class="table">
                 <thead class="text-center">
                     <tr>
+                        <th></th>
                         <th>Id</th>
                         <th>Fecha cita</th>
-        
+
                     </tr>
                 </thead>
                 <tbody class="table-group-divider text-center">
-                    <tr>
-                        <td>1234567890</td>
-                        <td>2023-07-20</td>
-        
+                    <tr *ngFor="let item of cita">
+                        <td><input class="form-check-input" type="checkbox" (change)="seleccionar(item.idCita)" (change)="onCheckboxChange($event)"/></td>
+                       
+                        <td>
+                            <p>{{item.idCita}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.fecha}}</p>
+                        </td>
                     </tr>
-        
+
                 </tbody>
             </table>
-            
-            <h5>Detalle</h5>
-            <textarea width="200" height="100" name="detalle"></textarea>
-            
-            <div> <button class="btn btn-primary" type="submit">Radicar</button></div>
+            <div class="alert alert-danger" role="alert" *ngIf="selectedCheckboxCount > 1">
+                Solo se puede seleccionar una cita a la vez
+              </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Detalle: </label>
+                <div class="col-sm-10">
+                    <textarea [(ngModel)]="detalle"
+                    type="text" [(ngModel)]="pqrsPacienteDTO.motivo" name="detalle" required class="form-control"
+                    ></textarea>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="isButtonDisabled()" >
+                <i class="fa-solid fa-circle-plus me-1"></i>Crear PQRS
+            </button>
             <br>
-            <h5>Filtro por Estado</h5>               
+            <br>
+            <h5>Filtro por Estado</h5>
             <div class="mb-3 row">
                 <div class="col-sm-4">
                     <select name="estado" required class="form-select">
-                        <option value="" selected>Seleccione el estado</option>  
+                        <option value="" selected>Seleccione el estado</option>
                     </select>
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Filtrar</button>
-        
-            <table class = "table">
+
+            <table class="table">
                 <thead class="text-center">
                     <tr>
                         <th>Código de Radicación</th>
-                    
+
                         <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider text-center">
                     <tr>
                         <td>1234567890</td>
-                       
+
                         <td>Pendiente</td>
                     </tr>
                     <tr>
                         <td>9876543210</td>
-                       
+
                         <td>En curso</td>
                     </tr>
                     <tr>
                         <td>6543210987</td>
-                      
+
                         <td>Resuelto</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h5>Historial de mensajes</h5>
-            <textarea width="200" height="100" name="historial-mensajes"></textarea>
-        
-            <h5>Respuesta</h5>
-            <textarea width="200" height="100" name="mensaje"></textarea>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Historial de mensajes: </label>
+                <div class="col-sm-10">
+                    <textarea width="200" height="100" class="form-control" name="historial-mensajes"></textarea>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Respuesta: </label>
+                <div class="col-sm-10">
+                    <textarea width="200" height="100" class="form-control" name="mensaje"></textarea>
+                </div>
+            </div>
             <div>
                 <button class="btn btn-primary" type="submit">Enviar</button>
             </div>

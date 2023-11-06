@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ItemPQRSDTO } from '../modelo/ItemPQRSDTO';
-import { RegistroPQRSDTO } from '../modelo/RegistroPQRSDTO';
+import { ItemPQRSDTO } from '../modelo/clinica/ItemPQRSDTO';
+import { PQRSPacienteDTO } from '../modelo/paciente/PQRSPacienteDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -11,33 +11,33 @@ export class PqrsService {
   constructor() {
     this.pqrs = [];
     this.pqrs.push({
-      codigo: 1, estado: 'ACTIVO', motivo: 'Solicitud de información', fecha:
-        '2023-10-12'
+      codigoRadicacion: 1, detalle: 'Solicitud de información', fecha:
+        '2023-10-12', estadoPqrs: 'ACTIVO'
     });
     this.pqrs.push({
-      codigo: 2, estado: 'ACTIVO', motivo: 'Solicitud de cambio de fecha',
-      fecha: '2023-09-29'
+      codigoRadicacion: 2, detalle: 'Solicitud de cambio de fecha',
+      fecha: '2023-09-29', estadoPqrs: 'ACTIVO'
     });
     this.pqrs.push({
-      codigo: 3, estado: 'CERRADO', motivo: 'Solicitud de información', fecha:
-        '2023-11-01'
+      codigoRadicacion: 3, detalle: 'Solicitud de información', fecha:
+        '2023-11-01',  estadoPqrs: 'CERRADO'
     });
     this.pqrs.push({
-      codigo: 4, estado: 'ACTIVO', motivo: 'Queja sobre médico', fecha:
-        '2023-09-07'
+      codigoRadicacion: 4,  detalle: 'Queja sobre médico', fecha:
+        '2023-09-07', estadoPqrs: 'ACTIVO'
     });
   }
   public listar(): ItemPQRSDTO[] {
     return this.pqrs;
   }
   public obtener(codigo: number): ItemPQRSDTO | undefined {
-    return this.pqrs.find(pqrs => pqrs.codigo == codigo);
+    return this.pqrs.find(pqrs => pqrs.codigoRadicacion == codigo);
   }
-  public crear(pqrs: RegistroPQRSDTO) {
+  public crear(pqrs: PQRSPacienteDTO) {
     let codigo = this.pqrs.length + 1;
     this.pqrs.push({
-      codigo: codigo, estado: 'ACTIVO', motivo: pqrs.motivo, fecha: new
-        Date().toISOString()
+      codigoRadicacion: codigo,  detalle: pqrs.motivo, fecha: new
+        Date().toISOString(), estadoPqrs: 'ACTIVO'
     });
   }
 }

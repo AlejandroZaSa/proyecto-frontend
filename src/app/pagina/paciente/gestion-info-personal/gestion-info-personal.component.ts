@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActualizarPacienteDTO } from 'src/app/modelo/ActualizarPacienteDTO';
+import { ActualizarPacienteDTO } from 'src/app/modelo/paciente/ActualizarPacienteDTO';
 
 @Component({
   selector: 'app-gestion-info-personal',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemPQRSDTO } from 'src/app/modelo/ItemPQRSDTO';
+import { ItemPQRSDTO } from 'src/app/modelo/clinica/ItemPQRSDTO';
 import { PqrsService } from 'src/app/servicios/pqrs.service';
 
 @Component({
