@@ -6,7 +6,7 @@
         <form>
             <div class="mb-3 row">
                 <div class="col-sm-10">
-                    <select name="medico" required class="form-select">
+                    <select name="medico" required class="form-select" [(ngModel)]="medicoSeleccionado" (ngModelChange)="seleccionarMedico()">
                         <option value="" selected>Seleccione el nombre de un médico</option>
                         <option value="1">Dr. Carlos</option>
                         <option value="2">Dr. Nohemy</option>
@@ -16,7 +16,7 @@
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-10">
-                      <input type="date" name="fecha" class="form-control"  placeholder="Fecha">
+                      <input type="date" name="fecha" class="form-control" [(ngModel)]="fechaSeleccionada" (change)="seleccionarFecha($event)">
                 </div>              
             </div>
 

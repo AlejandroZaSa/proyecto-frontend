@@ -11,11 +11,17 @@ import { PqrsService } from 'src/app/servicios/pqrs.service';
 })
 export class PqrsPacienteComponent {
 
+  estadoSeleccionado: string =''
+
   pqrsPacienteDTO: PQRSPacienteDTO;
+  
+
   citaService: CitaService = new CitaService;
 
   cita: ItemCitaPqrsPaciente[]=this.citaService.listar();
-
+  
+  selectedCheckboxCount: number = 0;
+  auxiliarCitas: ItemCitaPqrsPaciente[];
 
   
   detalle: string = '';
@@ -23,6 +29,7 @@ export class PqrsPacienteComponent {
 
   constructor(private pqrsService: PqrsService) {
     this.pqrsPacienteDTO = new PQRSPacienteDTO();
+    this.auxiliarCitas = this.cita;
   }
   public crearPqrs() {
     this.pqrsService.crear(this.pqrsPacienteDTO);
@@ -31,7 +38,7 @@ export class PqrsPacienteComponent {
     this.pqrsPacienteDTO.codigoCita = codigoCita;
   }
 
-  selectedCheckboxCount: number = 0;
+
 
   onCheckboxChange(event:any) {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -43,9 +50,22 @@ export class PqrsPacienteComponent {
    
   }
 
+  public seleccionarFecha(event:any){
+    let fecha = event.target.value;
+    if(fecha == ""){
+      this.auxiliarCitas = this.cita;
+    }else{
+      this.auxiliarCitas = this.cita.filter( c => c.fecha == fecha );
+    }
+  }
+
 
   isButtonDisabled() {
     return this.detalle.trim() === '' || this.selectedCheckboxCount !== 1;
+  }
+
+  seleccionarEstado(){
+    console.log("Estado seleccionado: "+ this.estadoSeleccionado)
   }
 
 }

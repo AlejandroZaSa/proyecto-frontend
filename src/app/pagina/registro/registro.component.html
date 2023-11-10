@@ -4,7 +4,7 @@
             paciente</h5>
     </div>
     <div class="card-body p-5">
-        <form #f="ngForm" (ngSubmit)="registrar()">
+        <form #f="ngForm">
 
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Cédula: </label>
@@ -33,10 +33,16 @@
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Foto: </label>
-                <div class="col-sm-10">
-                    <input type="file" name="urlFoto" class="form-control" required (change)="onFileChange($event)" />
+                <div class="col-sm-8">
+                    <input type="file" class="form-control" name="foto" (change)="onFileChange($event)" />
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" [disabled]="archivos == null" class="btn btn-primary" (click)="subirImagen()">
+                        <i class="fa-solid fa-cloud-arrow-up me-2"></i>Subir Foto
+                    </button>
                 </div>
             </div>
+
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Ciudad: </label>
                 <div class="col-sm-10">
@@ -45,7 +51,7 @@
                         <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
                     </select>
                 </div>
-                
+
             </div>
 
             <div class="mb-3 row">
@@ -69,7 +75,7 @@
                 <div class="col-sm-10">
                     <select name="eps" required class="form-select" [(ngModel)]="registroPacienteDTO.eps">
                         <option value="" selected>Seleccione una EPS</option>
-                        <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
+                        <option [value]="item.codigo" *ngFor="let item of eps; index as i">{{item.nombre}}</option>
                     </select>
                 </div>
 
@@ -115,9 +121,11 @@
             <br>
             <div class="alert alert-danger" role="alert" *ngIf="!sonIguales()">Las contraseñas no
                 coinciden</div>
-            <button class="btn btn-primary" type="submit" [disabled]="f.invalid || !sonIguales()">
+            <button (click)="registrar()" class="btn btn-primary" type="submit" [disabled]="f.invalid || !sonIguales()">
                 <i class="fa-solid fa-circle-plus me-1"></i>Registrarse
             </button>
+            <app-alerta [alerta]="alerta"></app-alerta>
+
         </form>
     </div>
 </div>

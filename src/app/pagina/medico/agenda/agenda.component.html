@@ -7,7 +7,7 @@
 
       <div class="mb-3 row">
         <div class="col-sm-4">
-          <input type="date" name="fecha" class="form-control" >
+          <input type="date" name="fecha" class="form-control" [(ngModel)]="fechaSeleccionada" (change)="seleccionarFecha($event)">
         </div>
       </div>
 

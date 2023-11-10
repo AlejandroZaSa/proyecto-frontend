@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="pqrs-paciente.component.css">
+
 <div class="card">
     <div class="card-header ps-5 pt-4 pb-4">
         <h5 class="mb-0">Pqrs paciente</h5>
@@ -7,7 +9,7 @@
 
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                    <input type="date" name="fecha" class="form-control" placeholder="Fecha" (change)="seleccionarFecha($event)">
                 </div>
             </div>
 
@@ -23,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider text-center">
-                    <tr *ngFor="let item of cita">
+                    <tr *ngFor="let item of auxiliarCitas">
                         <td><input class="form-check-input" type="checkbox" (change)="seleccionar(item.idCita)" (change)="onCheckboxChange($event)"/></td>
                        
                         <td>
@@ -56,7 +58,7 @@
             <h5>Filtro por Estado</h5>
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <select name="estado" required class="form-select">
+                    <select name="estado" required class="form-select" [(ngModel)]="estadoSeleccionado" (ngModelChange)="seleccionarEstado()">
                         <option value="" selected>Seleccione el estado</option>
                     </select>
                 </div>
@@ -67,24 +69,28 @@
                 <thead class="text-center">
                     <tr>
                         <th>Código de Radicación</th>
-
+                        <th>Detalle</th>
+                        <th>Fecha de Creacion</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider text-center">
                     <tr>
                         <td>1234567890</td>
-
+                        <td>zzzzzzz</td>
+                        <td>zzzzzzzz</td>
                         <td>Pendiente</td>
                     </tr>
                     <tr>
                         <td>9876543210</td>
-
+                        <td>zzzzzzz</td>
+                        <td>zzzzzzzz</td>
                         <td>En curso</td>
                     </tr>
                     <tr>
                         <td>6543210987</td>
-
+                        <td>zzzzzzz</td>
+                        <td>zzzzzzzz</td>
                         <td>Resuelto</td>
                     </tr>
                 </tbody>
@@ -92,9 +98,30 @@
 
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Historial de mensajes: </label>
-                <div class="col-sm-10">
-                    <textarea width="200" height="100" class="form-control" name="historial-mensajes"></textarea>
-                </div>
+            </div>
+
+            <div class="chat-history">
+                <ul class="m-b-0">
+                    <li class="clearfix">
+                        <div class="message-data text-end">
+                            <span class="message-data-time">10:10 AM, Today</span>
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                        </div>
+                        <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="message-data">
+                            <span class="message-data-time">10:12 AM, Today</span>
+                        </div>
+                        <div class="message my-message">Are we meeting today?</div>                                    
+                    </li>                               
+                    <li class="clearfix">
+                        <div class="message-data">
+                            <span class="message-data-time">10:15 AM, Today</span>
+                        </div>
+                        <div class="message my-message">Project has been already finished and I have results to show you.</div>
+                    </li>
+                </ul>
             </div>
 
             <div class="mb-3 row">

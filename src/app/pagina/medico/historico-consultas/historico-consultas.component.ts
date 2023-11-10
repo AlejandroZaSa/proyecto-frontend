@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./historico-consultas.component.css']
 })
 export class HistoricoConsultasComponent {
+  fechaSeleccionada: string = ''
+  seleccionarFecha(event:any) {
+    console.log('Fecha seleccionada:', this.fechaSeleccionada);
+
+  }
 
 }

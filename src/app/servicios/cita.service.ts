@@ -10,6 +10,7 @@ export class CitaService {
   cita: ItemCitaPqrsPaciente[];
   constructor() {
     this.cita = [];
+
     this.cita.push({
       idCita: 1, fecha: '2023-09-29'
     });

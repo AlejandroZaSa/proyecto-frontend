@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./consulta.component.css']
 })
 export class ConsultaComponent {
+  fechaSeleccionada: string = ''
+  seleccionarFecha(event:any) {
+    console.log('Fecha seleccionada:', this.fechaSeleccionada);
+  
+  }
 
 }

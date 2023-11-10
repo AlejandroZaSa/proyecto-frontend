@@ -7,10 +7,10 @@
              <div class="mb-3 row">
                 <label  class="col-sm-2 col-form-label"> Ingrese el nombre del medicamento:  </label>
                 <div class="col-sm-4">
-                    <input class="form-control"  type="text">
+                    <input class="form-control"  type="text" [(ngModel)]="textoIngresado" (input)="onInputChange($event)">
                 </div>
              </div>
-            <button class="btn btn-primary" type="submit">Buscar</button>
+            <button class="btn btn-primary" type="submit" (click)="imprimirEnConsola()">Buscar</button>
             <div>
                 <table class="table">
                     <thead class="text-center">

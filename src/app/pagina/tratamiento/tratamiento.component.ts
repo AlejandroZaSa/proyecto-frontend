@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class TratamientoComponent {
 
+  textoIngresado: string = '';
+
+  imprimirEnConsola() {
+    console.log('Texto ingresado:', this.textoIngresado);
+  }
+
+  onInputChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const valor = inputElement.value;
+    console.log('Texto actual en el input:', valor);
+  }
 }

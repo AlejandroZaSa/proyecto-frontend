@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ItemPQRSDTO } from 'src/app/modelo/clinica/ItemPQRSDTO';
+import { ItemCitaPqrsPaciente } from 'src/app/modelo/paciente/ItemCitaPqrsPacienteDTO';
+import { CitaService } from 'src/app/servicios/cita.service';
 import { PqrsService } from 'src/app/servicios/pqrs.service';
 
 @Component({
@@ -9,7 +11,23 @@ import { PqrsService } from 'src/app/servicios/pqrs.service';
 })
 export class PqrsAdminComponent {
   pqrs: ItemPQRSDTO[];
-  constructor(private pqrsService: PqrsService) {
+  
+  auxiliar: ItemPQRSDTO[];
+
+  constructor(private pqrsService: PqrsService, private citaService: CitaService) {
     this.pqrs = pqrsService.listar();
+    this.auxiliar= this.pqrs;
+    
   }
+
+
+
+  public filtrarTabla(event:any){
+      let estadoSelecionado = event.target.value;
+      if(estadoSelecionado == ""){
+        this.auxiliar = this.pqrs;
+      }else{
+        this.auxiliar = this.pqrs.filter( p => p.estadoPqrs == estadoSelecionado );
+      }
+  } 
 }

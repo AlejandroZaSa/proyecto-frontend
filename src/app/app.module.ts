@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ import { ConsultasPacienteComponent } from './pagina/paciente/consultas-paciente
 import { GestionInfoPersonalComponent } from './pagina/paciente/gestion-info-personal/gestion-info-personal.component';
 import { PedirCitaComponent } from './pagina/paciente/pedir-cita/pedir-cita.component';
 import { PqrsPacienteComponent } from './pagina/paciente/pqrs-paciente/pqrs-paciente.component';
+import { AlertaComponent } from './pagina/alerta/alerta.component';
 
 
 @NgModule({
@@ -50,12 +52,14 @@ import { PqrsPacienteComponent } from './pagina/paciente/pqrs-paciente/pqrs-paci
     ConsultasPacienteComponent,
     GestionInfoPersonalComponent,
     PedirCitaComponent,
-    PqrsPacienteComponent
+    PqrsPacienteComponent,
+    AlertaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
