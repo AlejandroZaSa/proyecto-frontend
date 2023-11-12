@@ -9,34 +9,42 @@
                     <input type="date" name="fecha" class="form-control" [(ngModel)]="fechaSeleccionada" (change)="seleccionarFecha($event)">
                 </div>
             </div>
-
-            <input class="btn btn-primary" type="submit" value="Buscar">
-
             <table class="table">
                 <thead class="text-center">
                     <tr>
                         <th>Paciente</th>
                         <th>Fecha</th>
                         <th>Notas del Medico</th>
+                        <th>Diagnóstico</th>
                         <th>Tratamiento</th>
                         <th>Sintomas</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider text-center">
-                    <tr>
-                        <td>María López</td>
-                        <td>2023-11-01</td>
-                        <td>xxxxxx</td>
-
+                    <tr *ngFor="let item of auxiliarConsultas">
                         <td>
+                            <p>{{item.nombrePaciente}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.fecha}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.notasMedico}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.diagnostico}}</p>
+                        </td>
+                         <td>
                             <div style="display: flex; justify-content: center">
-                                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-eye"></i></button>
+                                <button routerLink="/tratamiento/{{item.idConsulta}}" type="submit" class="btn btn-outline-none"><i class="fa-solid fa-eye"></i></button>
                             </div>
                         </td>
-                        <td>xxxxxxxxx</td>
-                    </tr>
+                        <td>
+                            <p>{{item.sintomas}}</p>
+                        </td>
                 </tbody>
             </table>
+            <app-alerta [alerta]="alerta"></app-alerta>
         </form>
 
     </div>

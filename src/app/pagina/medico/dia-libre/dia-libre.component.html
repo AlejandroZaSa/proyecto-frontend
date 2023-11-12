@@ -5,14 +5,14 @@
     <div class="card-body p-5">
         <form>
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label" for="fecha">Elija la fecha: </label>
+                <label class="col-sm-2 col-form-label"for="fecha">Elija la fecha: </label>
                 <div class="col-sm-4">
-                    <input class="form-control" type="date" name="fecha" id="fecha">
+                    <input class="form-control" type="date"  [(ngModel)]="diaLibre.fecha"  name="fecha" id="fecha">
                 </div>
             </div>
 
             <div>
-                <button class="btn btn-primary" type="submit">Agregar</button>
+                <button class="btn btn-primary" (click)="agendarDiaLibre()" type="submit">Agregar</button>
                 <button class="btn btn-primary" type="submit">Actualizar</button>
             </div>
 
@@ -21,17 +21,18 @@
                     <thead class="text-center">
                         <tr>
                             <th>Fecha</th>
-                            <th>Estado</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider text-center">
-                        <tr>
-                            <td>xxxxxx</td>
-                            <td>xxxxxx</td>
-                        </tr>
+                        <tr *ngFor="let item of diasLibres">
+                            <td>
+                                <p>{{item.fecha}}</p>
+                            </td>
+                            
                     </tbody>
                 </table>
             </div>
+            <app-alerta [alerta]="alerta"></app-alerta>
         </form>
     </div>
 </div>

@@ -21,6 +21,10 @@ export class MedicoService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/listar-citas-pendientes/${codigoMedico}`);
   }
 
+  public listarDiasLibres(codigoMedico:number): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.userUrl}/listar-dias-libres/${codigoMedico}`);
+  }
+
   public listarCitaPaciente(codigoPaciente:number): Observable<MensajeDTO>{
     return this.http.get<MensajeDTO>(`${this.userUrl}/listar-cita-paciente/${codigoPaciente}`);
   }
@@ -33,9 +37,10 @@ export class MedicoService {
     return this.http.get<MensajeDTO>(`${this.userUrl}/listar-citas-realizadas/${codigoMedico}`);
   }
 
-  /*public generarFactura(codigoConsulta:number): Observable<MensajeDTO> {
-    return this.http.post<MensajeDTO>(`${this.userUrl}/generar-factura/${codigoConsulta}`);
-  }*/
+  public generarFactura(codigoConsulta:number): Observable<MensajeDTO> {
+    //return this.http.post<MensajeDTO>(`${this.userUrl}/generar-factura/${codigoConsulta}`);
+    return this.http.get<MensajeDTO>(`${this.userUrl}/generar-factura/${codigoConsulta}`);
+  }
 
   public mostrarDetalleFactura(codigoConsulta:number): Observable<MensajeDTO>{
     return this.http.get<MensajeDTO>(`${this.userUrl}/detalle-factura/${codigoConsulta}`);

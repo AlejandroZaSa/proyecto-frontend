@@ -3,7 +3,7 @@
     <h5 class="mb-0">Agenda de citas</h5>
   </div>
   <div class="card-body p-5">
-    <form>
+    <form #f="ngForm">
 
       <div class="mb-3 row">
         <div class="col-sm-4">
@@ -39,7 +39,7 @@
             </td>
             <td>
               <div style="display: flex; justify-content: center">
-                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button type="submit" (click)="irAConsulta(item)" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
               </div>
             </td>
           </tr>

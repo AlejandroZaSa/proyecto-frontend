@@ -47,7 +47,7 @@ export class TratamientoComponent {
         this.auxiliarTratamiento = Array.from(this.tratamiento)
       },
       error: error => {
-        this.alerta = { mensaje: error.error, tipo: "danger" };
+        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
       }
     });
   }

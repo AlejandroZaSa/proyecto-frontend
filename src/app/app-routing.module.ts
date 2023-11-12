@@ -46,6 +46,10 @@ const routes: Routes = [
         data: { expectedRole: ["paciente", "medico", "admin"] }
     },
     {
+        path: "recuperar-password", component: RecuperarPasswordComponent, canActivate: [RolesGuard],
+        data: { expectedRole: ["paciente", "medico", "admin"] }
+    },
+    {
         path: "paciente/gestion-info-personal", component: GestionInfoPersonalComponent, canActivate: [RolesGuard], data: {
             expectedRole: ["paciente"]
         }

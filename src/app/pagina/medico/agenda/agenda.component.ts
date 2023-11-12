@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Alerta } from 'src/app/modelo/alerta';
 import { ItemCitaMedicoDTO } from 'src/app/modelo/medico/ItemCitaMedicoDTO';
 import { MedicoService } from 'src/app/servicios/medico.service';
@@ -15,11 +16,15 @@ export class AgendaComponent {
   auxiliarAgenda: ItemCitaMedicoDTO[];
   alerta!:Alerta
 
-  constructor(private medicoService: MedicoService, private tokenService: TokenService){
+  constructor(private router: Router, private medicoService: MedicoService, private tokenService: TokenService){
     this.agenda = [];
     this.auxiliarAgenda = [];
     this.cargarAgenda();
   }
+
+   public irAConsulta(item:ItemCitaMedicoDTO){
+
+   }
 
   fechaSeleccionada: string = ''
 
