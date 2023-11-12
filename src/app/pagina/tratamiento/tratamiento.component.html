@@ -3,14 +3,14 @@
         <h5 class="mb-0">Tratamiento</h5>
     </div>
     <div class="card-body p-5">
-        <form>
+        <form #f="ngForm">
              <div class="mb-3 row">
                 <label  class="col-sm-2 col-form-label"> Ingrese el nombre del medicamento:  </label>
                 <div class="col-sm-4">
-                    <input class="form-control"  type="text" [(ngModel)]="textoIngresado" (input)="onInputChange($event)">
+                    <input class="form-control"  type="text"  name="medicamento" [(ngModel)]="textoIngresado">
                 </div>
              </div>
-            <button class="btn btn-primary" type="submit" (click)="imprimirEnConsola()">Buscar</button>
+            <button class="btn btn-primary" type="submit" (click)="buscarTratamiento()">Buscar</button>
             <div>
                 <table class="table">
                     <thead class="text-center">
@@ -22,17 +22,22 @@
                     
                     </thead>
                     <tbody class="table-group-divider text-center">
-                        <tr>
-                           
-                            <td>Carboximetil</td>
-                            <td>1</td>
-                            <td>Ninguna</td>
+                        <tr *ngFor="let item of auxiliarTratamiento">
+                            <td>
+                                <p>{{item.nombreMedicamento}}</p>
+                            </td>
+                            <td>
+                                <p>{{item.dosis}}</p>
+                            </td>
+                            <td>
+                                <p>{{item.observaciones}}</p>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <app-alerta [alerta]="alerta"></app-alerta>
         </form>
-        
     </div>
     </div>
 

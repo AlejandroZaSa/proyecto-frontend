@@ -24,6 +24,10 @@
             <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
                 Iniciar sesión
             </button>
+            <div>
+                <a href = "#" (click)="enviarLinkRecuperacion($event)">Recuperar contraseña</a>
+            </div>
+            <app-alerta [alerta]="alerta"></app-alerta>
         </form>
     </div>
 </div>

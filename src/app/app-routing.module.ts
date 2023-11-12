@@ -21,35 +21,76 @@ import { ConsultasPacienteComponent } from './pagina/paciente/consultas-paciente
 import { GestionInfoPersonalComponent } from './pagina/paciente/gestion-info-personal/gestion-info-personal.component';
 import { PedirCitaComponent } from './pagina/paciente/pedir-cita/pedir-cita.component';
 import { PqrsPacienteComponent } from './pagina/paciente/pqrs-paciente/pqrs-paciente.component';
+import { LoginGuard } from './guards/permiso.service';
+import { RolesGuard } from './guards/roles.service';
 
 
 const routes: Routes = [
-{ path: "", component: InicioComponent },
-{ path: "login", component: LoginComponent },
-{ path: "registro", component: RegistroComponent },
-{ path: "admin/gestion-medicos", component: GestionMedicosComponent },
-{ path: "medico/dia-libre", component: DiaLibreComponent },
-{ path: "medico/agenda", component: AgendaComponent },
-{ path: "medico/consulta", component: ConsultaComponent },
-{ path: "medico/historico-consultas", component: HistoricoConsultasComponent },
-{ path: "medico/menu-medico", component: MenuMedicoComponent },
-{ path: "medico/factura", component: FacturaComponent },
-{ path: "admin/historial-consultas", component: HistorialConsultasComponent },
-{ path: "admin/menu-admin", component: MenuAdminComponent },
-{ path: "admin/pqrs-admin", component: PqrsAdminComponent },
-{ path: "admin/registro-medicos", component: RegistroMedicosComponent },
-{ path: "recuperar-password", component: RecuperarPasswordComponent },
-{ path: "paciente/consultas-paciente", component: ConsultasPacienteComponent },
-{ path: "paciente/gestion-info-personal", component: GestionInfoPersonalComponent },
-{ path: "paciente/menu-paciente", component: MenuPacienteComponent },
-{ path: "paciente/pedir-cita", component: PedirCitaComponent },
-{ path: "paciente/pqrs-paciente", component: PqrsPacienteComponent },
-{ path: "tratamiento", component: TratamientoComponent },
-{ path: "**", pathMatch: "full", redirectTo: "" }
+    { path: "", component: InicioComponent },
+    { path: "recuperar-password", component: RecuperarPasswordComponent },
+   
+    { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
+    { path: "registro", component: RegistroComponent, canActivate: [LoginGuard] },
+    {
+        path: "paciente/pqrs-paciente", component: PqrsPacienteComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["paciente"]
+        }
+    },
+    {
+        path: "paciente/consultas-paciente", component: ConsultasPacienteComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["paciente"]
+        }
+    },
+    {
+        path: "tratamiento/:codigoConsulta", component: TratamientoComponent, canActivate: [RolesGuard],
+        data: { expectedRole: ["paciente", "medico", "admin"] }
+    },
+    {
+        path: "paciente/gestion-info-personal", component: GestionInfoPersonalComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["paciente"]
+        }
+    },
+    {
+        path: "paciente/pedir-cita", component: PedirCitaComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["paciente"]
+        }
+    },
+
+    {
+        path: "medico/agenda", component: AgendaComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["medico"]
+        }
+    },
+
+    {
+        path: "medico/consulta", component: ConsultaComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["medico"]
+        }
+    },
+
+    {
+        path: "medico/dia-libre", component: DiaLibreComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["medico"]
+        }
+    },
+
+    {
+        path: "medico/factura", component: FacturaComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["medico"]
+        }
+    },
+
+    {
+        path: "medico/historico-consultas", component: HistoricoConsultasComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["medico"]
+        }
+    },
+
+    { path: "**", pathMatch: "full", redirectTo: "" }
 ];
 @NgModule({
-imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
 

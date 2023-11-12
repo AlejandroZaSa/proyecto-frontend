@@ -53,11 +53,18 @@ export class PacienteService {
   }
 
   public buscarConsulta(busquedaConsultaDTO: BusquedaConsultaDTO): Observable<MensajeDTO> {
-    return this.http.request<MensajeDTO>('get', `${this.userUrl}/buscar-consulta`, { body: busquedaConsultaDTO});
+    //return this.http.request<MensajeDTO>('get', `${this.userUrl}/buscar-consulta`, { body: busquedaConsultaDTO});
+    return this.http.post<MensajeDTO>(`${this.userUrl}/buscar-consulta`, busquedaConsultaDTO);
+  }
+
+  public listarConsultasPaciente(codigoPaciente: number): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.userUrl}/listar-consultas-paciente/${codigoPaciente}`);
+    
   }
 
   public filtrarMedicoCita(filtroCitaDTO: FiltroCItaDTO): Observable<MensajeDTO> {
-    return this.http.request<MensajeDTO>('get', `${this.userUrl}//filtrar-medico-cita`, { body: filtroCitaDTO});
+    //return this.http.request<MensajeDTO>('get', `${this.userUrl}/filtrar-medico-cita`, { body: filtroCitaDTO});
+    return this.http.post<MensajeDTO>(`${this.userUrl}/filtrar-medico-cita`, filtroCitaDTO);
   }
 
   public verTratamiento(codigoConsulta: number): Observable<MensajeDTO> {

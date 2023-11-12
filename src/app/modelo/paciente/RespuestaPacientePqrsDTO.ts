@@ -4,7 +4,7 @@ export class RespuestaPacientePqrsDTO {
 
     mensaje: string= ""
 
-    respuestaAdmin: string= ""
+    respuestaAdmin: number= 0
 
     codigoPaciente: number= 0
     

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MensajeDTO } from '../modelo/otros/mensaje-dto';
 import { Observable } from 'rxjs';
+import { CambioPasswordDTO } from '../modelo/clinica/CambioPasswordDTO';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +24,16 @@ export class ClinicaService {
   }
   public listarMedicamentos(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.clinicaURL}/medicamentos`);
+  }
+  public listarEspecialidades(): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.clinicaURL}/especialidades`);
+  }
+  public verTratamiento(codigoConsulta:number):Observable<MensajeDTO>{
+    return this.http.get<MensajeDTO>(`${this.clinicaURL}/ver-tratamiento/${codigoConsulta}`);
+  }
+
+  public enviarLinkRecuperacion(email:string):Observable<MensajeDTO>{
+    return this.http.get<MensajeDTO>(`${this.clinicaURL}/enviar-link-recuperacion/${email}`);
   }
 }
 

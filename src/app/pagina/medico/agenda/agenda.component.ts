@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Alerta } from 'src/app/modelo/alerta';
+import { ItemCitaMedicoDTO } from 'src/app/modelo/medico/ItemCitaMedicoDTO';
+import { MedicoService } from 'src/app/servicios/medico.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-agenda',
@@ -7,12 +11,42 @@ import { Component } from '@angular/core';
 })
 export class AgendaComponent {
 
-  fechaSeleccionada: string = ''
+  agenda: ItemCitaMedicoDTO[];
+  auxiliarAgenda: ItemCitaMedicoDTO[];
+  alerta!:Alerta
 
-  seleccionarFecha(event:any) {
-    console.log('Fecha seleccionada:', this.fechaSeleccionada);
-  
+  constructor(private medicoService: MedicoService, private tokenService: TokenService){
+    this.agenda = [];
+    this.auxiliarAgenda = [];
+    this.cargarAgenda();
   }
 
+  fechaSeleccionada: string = ''
+
+  public cargarAgenda(){
+
+    let codigoMedico = this.tokenService.getCodigo();
+
+    console.log(codigoMedico)
+
+    this.medicoService.listarCitasPendientes(codigoMedico).subscribe({
+      next: data => {
+        this.agenda = data.respuesta;
+        this.auxiliarAgenda = Array.from(this.agenda)
+      },
+      error: error => {
+        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+      }
+    });
+  }
+
+  public filtrarTabla(event:any){
+   
+    if(this.fechaSeleccionada == ""){
+      this.auxiliarAgenda = this.agenda;
+    }else{
+      this.auxiliarAgenda = this.agenda.filter( a => a.fecha == this.fechaSeleccionada );
+    }
+} 
 
 }

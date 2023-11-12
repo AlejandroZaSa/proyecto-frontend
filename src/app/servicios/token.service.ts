@@ -30,12 +30,16 @@ export class TokenService {
 
   public login(token: string) {
     this.setToken(token);
-    this.router.navigate(["/"]);
+    this.router.navigate(["/"]).then(() => {
+      window.location.reload();
+    });
   }
 
   public logout() {
     window.sessionStorage.clear();
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/login"]).then(() => {
+      window.location.reload();
+    });
   }
 
   private decodePayload(token: string): any {
@@ -43,6 +47,34 @@ export class TokenService {
     const payloadDecoded = Buffer.from(payload, 'base64').toString('ascii');
     const values = JSON.parse(payloadDecoded);
     return values;
+
   }
 
+  public getCodigo(): number {
+    const token = this.getToken();
+
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.id;
+    }
+    return 0;
+  }
+
+  public getEmail(): string {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.sub;
+    }
+    return "";
+  }
+
+  public getRole(): string[] {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.rol;
+    }
+    return [];
+  }
 }

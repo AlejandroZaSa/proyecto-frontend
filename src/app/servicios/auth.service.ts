@@ -4,6 +4,7 @@ import { RegistroPacienteDTO } from '../modelo/paciente/registro-paciente-dto';
 import { LoginDTO } from '../modelo/clinica/login-dto';
 import { Observable } from 'rxjs';
 import { MensajeDTO } from '../modelo/otros/mensaje-dto';
+import { CambioPasswordDTO } from '../modelo/clinica/CambioPasswordDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class AuthService {
 
   public login(loginDTO: LoginDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
+  }
+
+  public cambiarPassword(cambiarPassword:CambioPasswordDTO):Observable<MensajeDTO>{
+    return this.http.put<MensajeDTO>(`${this.authURL}/enviar-link-recuperacion`, cambiarPassword);
   }
 }

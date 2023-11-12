@@ -20,8 +20,6 @@ export class PqrsAdminComponent {
     
   }
 
-
-
   public filtrarTabla(event:any){
       let estadoSelecionado = event.target.value;
       if(estadoSelecionado == ""){

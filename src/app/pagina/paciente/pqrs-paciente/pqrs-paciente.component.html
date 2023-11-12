@@ -5,16 +5,14 @@
         <h5 class="mb-0">Pqrs paciente</h5>
     </div>
     <div class="card-body p-5">
-        <form #f="ngForm" (ngSubmit)="crearPqrs()">
+        <form #f="ngForm">
 
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input type="date" name="fecha" class="form-control" placeholder="Fecha" (change)="seleccionarFecha($event)">
+                    <input type="date" name="fecha" class="form-control" placeholder="Fecha"
+                        (change)="seleccionarFecha($event)">
                 </div>
             </div>
-
-            <input class="btn btn-primary" type="submit" value="Buscar">
-
             <table class="table">
                 <thead class="text-center">
                     <tr>
@@ -26,8 +24,9 @@
                 </thead>
                 <tbody class="table-group-divider text-center">
                     <tr *ngFor="let item of auxiliarCitas">
-                        <td><input class="form-check-input" type="checkbox" (change)="seleccionar(item.idCita)" (change)="onCheckboxChange($event)"/></td>
-                       
+                        <td><input class="form-check-input" type="checkbox" (change)="seleccionar(item.idCita)"
+                                (change)="onCheckboxChange($event)" /></td>
+
                         <td>
                             <p>{{item.idCita}}</p>
                         </td>
@@ -40,17 +39,16 @@
             </table>
             <div class="alert alert-danger" role="alert" *ngIf="selectedCheckboxCount > 1">
                 Solo se puede seleccionar una cita a la vez
-              </div>
+            </div>
 
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Detalle: </label>
                 <div class="col-sm-10">
-                    <textarea [(ngModel)]="detalle"
-                    type="text" [(ngModel)]="pqrsPacienteDTO.motivo" name="detalle" required class="form-control"
-                    ></textarea>
+                    <textarea [(ngModel)]="detalle" type="text" [(ngModel)]="pqrsPacienteDTO.motivo" name="detalle"
+                        required class="form-control"></textarea>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit" [disabled]="isButtonDisabled()" >
+            <button class="btn btn-primary" (click)="crearPqrs()" type="submit" [disabled]="isButtonDisabled()">
                 <i class="fa-solid fa-circle-plus me-1"></i>Crear PQRS
             </button>
             <br>
@@ -58,12 +56,14 @@
             <h5>Filtro por Estado</h5>
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <select name="estado" required class="form-select" [(ngModel)]="estadoSeleccionado" (ngModelChange)="seleccionarEstado()">
+                    <select name="estado" required class="form-select" (change)="filtrarTabla($event)"
+                        [(ngModel)]="estadoSeleccionado" (ngModelChange)="seleccionarEstado()">
                         <option value="" selected>Seleccione el estado</option>
+                        <option [value]="item" *ngFor="let item of estadosPqrs; index as i">{{item}}</option>
                     </select>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit">Filtrar</button>
+
 
             <table class="table">
                 <thead class="text-center">
@@ -75,64 +75,62 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider text-center">
-                    <tr>
-                        <td>1234567890</td>
-                        <td>zzzzzzz</td>
-                        <td>zzzzzzzz</td>
-                        <td>Pendiente</td>
-                    </tr>
-                    <tr>
-                        <td>9876543210</td>
-                        <td>zzzzzzz</td>
-                        <td>zzzzzzzz</td>
-                        <td>En curso</td>
-                    </tr>
-                    <tr>
-                        <td>6543210987</td>
-                        <td>zzzzzzz</td>
-                        <td>zzzzzzzz</td>
-                        <td>Resuelto</td>
+                    <tr *ngFor="let item of auxiliarPqrs; let i = index" (click)="seleccionarFila(item)">
+                        <td>
+                            <p>{{item.codigoRadicacion}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.detalle}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.fecha}}</p>
+                        </td>
+                        <td>
+                            <p>{{item.estadoPqrs}}</p>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Historial de mensajes: </label>
             </div>
 
             <div class="chat-history">
                 <ul class="m-b-0">
-                    <li class="clearfix">
-                        <div class="message-data text-end">
-                            <span class="message-data-time">10:10 AM, Today</span>
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                        </div>
-                        <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="message-data">
-                            <span class="message-data-time">10:12 AM, Today</span>
-                        </div>
-                        <div class="message my-message">Are we meeting today?</div>                                    
-                    </li>                               
-                    <li class="clearfix">
-                        <div class="message-data">
-                            <span class="message-data-time">10:15 AM, Today</span>
-                        </div>
-                        <div class="message my-message">Project has been already finished and I have results to show you.</div>
-                    </li>
+                  <li class="clearfix" *ngFor="let item of mensajesDTO">
+                    <ng-container *ngIf="item.nombreUsuario.includes('@')">
+                      <div class="message-data text-end">
+                        <span class="message-data-time">{{ item.fecha }}</span>
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                      </div>
+                      <div class="message other-message float-right">
+                        {{ item.mensaje }}
+                      </div>
+                    </ng-container>
+              
+                    <ng-container *ngIf="!item.nombreUsuario.includes('@')">
+                      <div class="message-data">
+                        <span class="message-data-time">{{ item.fecha }}</span>
+                      </div>
+                      <div class="message my-message">
+                        {{ item.mensaje }}
+                      </div>
+                    </ng-container>
+                  </li>
                 </ul>
-            </div>
+              </div>
 
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Respuesta: </label>
                 <div class="col-sm-10">
-                    <textarea width="200" height="100" class="form-control" name="mensaje"></textarea>
+                    <textarea width="200" height="100" [(ngModel)]="respuestaPaciente.mensaje" class="form-control" name="mensaje" ></textarea>
                 </div>
             </div>
             <div>
-                <button class="btn btn-primary" type="submit">Enviar</button>
+                <button class="btn btn-primary" (click)="enviarRespuesta()" type="submit">Enviar</button>
             </div>
+
+            <app-alerta [alerta]="alerta"></app-alerta>
         </form>
     </div>
 </div>

@@ -8,6 +8,8 @@ export class ItemConsultaPacienteDTO {
 
     diagnostico: string= ""
 
+    notasMedico: string = ""
+
     sintomas: string= ""
     
 }

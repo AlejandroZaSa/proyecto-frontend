@@ -7,11 +7,10 @@
 
       <div class="mb-3 row">
         <div class="col-sm-4">
-          <input type="date" name="fecha" class="form-control" [(ngModel)]="fechaSeleccionada" (change)="seleccionarFecha($event)">
+          <input type="date" name="fecha" class="form-control" [(ngModel)]="fechaSeleccionada"
+            (change)="filtrarTabla($event)">
         </div>
       </div>
-
-      <input class="btn btn-primary" type="submit" value="Buscar">
 
       <table class="table">
         <thead class="text-center">
@@ -22,36 +21,22 @@
             <th>Motivo</th>
             <th>Consulta</th>
           </tr>
+
         </thead>
         <tbody class="table-group-divider text-center">
-          <tr>
-            <td>María López</td>
-            <td>2023-11-01</td>
-            <td>10:00 AM</td>
-            <td>Consulta general</td>
+          <tr *ngFor="let item of auxiliarAgenda">
             <td>
-              <div style="display: flex; justify-content: center">
-                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
-              </div>
+              <p>{{item.nombrePaciente}}</p>
             </td>
-
-          </tr>
-          <tr>
-            <td>Pedro Rodríguez</td>
-            <td>2023-11-02</td>
-            <td>12:00 PM</td>
-            <td>Consulta de pediatría</td>
             <td>
-              <div style="display: flex; justify-content: center">
-                <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
-              </div>
+              <p>{{item.fecha}}</p>
             </td>
-          </tr>
-          <tr>
-            <td>Laura Sánchez</td>
-            <td>2023-11-03</td>
-            <td>2:00 PM</td>
-            <td>Consulta de ginecología</td>
+            <td>
+              <p>{{item.hora}}</p>
+            </td>
+            <td>
+              <p>{{item.motivo}}</p>
+            </td>
             <td>
               <div style="display: flex; justify-content: center">
                 <button type="submit" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -60,6 +45,7 @@
           </tr>
         </tbody>
       </table>
+      <app-alerta [alerta]="alerta"></app-alerta>
     </form>
   </div>
 </div>
