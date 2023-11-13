@@ -11,8 +11,11 @@ import { TokenService } from 'src/app/servicios/token.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   loginDTO: LoginDTO;
   alerta!: Alerta;
+  mostrarMensaje:string ="";
+  mostrarMess:boolean=false;
 
   constructor(private tokenService: TokenService, private authService: AuthService, private clinicaService: ClinicaService) {
     this.loginDTO = new LoginDTO();
@@ -34,15 +37,24 @@ export class LoginComponent {
   enviarLinkRecuperacion(event: Event) {
     event.preventDefault();
 
-    let email : string =""
+    if(this.loginDTO.email==""){
+      this.mostrarMess=true;
+      this.mostrarMensaje="Debes ingresar el correo si quieres recuperar la cuenta"
+      
+    }else{
+      this.mostrarMess=false;
+      let email : string = this.loginDTO.email;
 
-    this.clinicaService.enviarLinkRecuperacion(email).subscribe({
-      next: data => {
-        this.alerta = { mensaje: data.respuesta, tipo: "success" };
-      },
-      error: error => {
-        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
-      }
-    });
+      this.clinicaService.enviarLinkRecuperacion(email).subscribe({
+        next: data => {
+          this.alerta = { mensaje: data.respuesta, tipo: "success" };
+        },
+        error: error => {
+          this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+        }
+      });
+    }
+
+   
   }
 }

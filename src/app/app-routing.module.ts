@@ -27,7 +27,7 @@ import { RolesGuard } from './guards/roles.service';
 
 const routes: Routes = [
     { path: "", component: InicioComponent },
-    { path: "recuperar-password", component: RecuperarPasswordComponent },
+    { path: "recuperar-password/:email", component: RecuperarPasswordComponent },
    
     { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
     { path: "registro", component: RegistroComponent, canActivate: [LoginGuard] },
@@ -45,10 +45,7 @@ const routes: Routes = [
         path: "tratamiento/:codigoConsulta", component: TratamientoComponent, canActivate: [RolesGuard],
         data: { expectedRole: ["paciente", "medico", "admin"] }
     },
-    {
-        path: "recuperar-password", component: RecuperarPasswordComponent, canActivate: [RolesGuard],
-        data: { expectedRole: ["paciente", "medico", "admin"] }
-    },
+  
     {
         path: "paciente/gestion-info-personal", component: GestionInfoPersonalComponent, canActivate: [RolesGuard], data: {
             expectedRole: ["paciente"]

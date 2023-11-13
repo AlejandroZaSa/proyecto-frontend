@@ -24,6 +24,6 @@ export class AuthService {
   }
 
   public cambiarPassword(cambiarPassword:CambioPasswordDTO):Observable<MensajeDTO>{
-    return this.http.put<MensajeDTO>(`${this.authURL}/enviar-link-recuperacion`, cambiarPassword);
+    return this.http.put<MensajeDTO>(`${this.authURL}/cambiar-password`, cambiarPassword);
   }
 }
