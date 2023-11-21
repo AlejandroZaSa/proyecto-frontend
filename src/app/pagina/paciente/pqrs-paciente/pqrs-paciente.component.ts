@@ -19,7 +19,6 @@ import { TokenService } from 'src/app/servicios/token.service';
 export class PqrsPacienteComponent {
 
   estadoSeleccionado: string = ''
-
   pqrsPacienteDTO: PQRSPacienteDTO;
   pqrs: ItemPQRSDTO[];
   auxiliarPqrs: ItemPQRSDTO[];
@@ -32,8 +31,9 @@ export class PqrsPacienteComponent {
   respuestaPaciente: RespuestaPacientePqrsDTO;
   detalle: string = '';
   codigoPqrs: number = 0
+  filaSeleccionada:boolean=false;
 
-  constructor(private pqrsService: PqrsService, private citaService: CitaService, private pacienteService: PacienteService, private tokenService: TokenService, private clinicaService: ClinicaService) {
+  constructor(private citaService: CitaService, private pacienteService: PacienteService, private tokenService: TokenService, private clinicaService: ClinicaService) {
     this.pqrsPacienteDTO = new PQRSPacienteDTO();
     this.respuestaPaciente = new RespuestaPacientePqrsDTO;
     this.cita = []
@@ -52,6 +52,8 @@ export class PqrsPacienteComponent {
     this.mensajesDTO = []
     this.codigoPqrs = item.codigoRadicacion;
     this.obtenerMensajesPqrs();
+    this.filaSeleccionada = !this.filaSeleccionada;
+    
   }
 
   public cargarCitasPaciente() {
@@ -179,6 +181,8 @@ export class PqrsPacienteComponent {
       
     }
 
+    console.log(this.respuestaPaciente.respuestaAdmin)
+
     this.pacienteService.responderPqrs(this.respuestaPaciente).subscribe({
       next: data => {
         this.alerta = { mensaje: data.respuesta, tipo: "success" };
@@ -188,6 +192,4 @@ export class PqrsPacienteComponent {
       }
     });
   }
-
-
 }

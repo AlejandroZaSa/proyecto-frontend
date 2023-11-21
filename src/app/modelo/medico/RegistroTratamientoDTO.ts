@@ -4,6 +4,6 @@ export class RegistroTratamientoDTO {
 
     observaciones: string = ""
 
-    nombreMedicamiento: string = "" 
+    nombreMedicamento: string = "" 
 
 }

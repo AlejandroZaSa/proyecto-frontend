@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Alerta } from 'src/app/modelo/alerta';
 import { DetalleFacturaDTO } from 'src/app/modelo/medico/DetalleFacturaDTO';
 import { MedicoService } from 'src/app/servicios/medico.service';
@@ -11,16 +12,24 @@ import { MedicoService } from 'src/app/servicios/medico.service';
 export class FacturaComponent {
 
   alerta!:Alerta
+  inputDeshabilitado=true
   facturaDetalle:DetalleFacturaDTO;
-  constructor(private medicoService: MedicoService){
+  codconsulta:number=0
+  constructor(private route: ActivatedRoute,private medicoService: MedicoService){
     this.facturaDetalle = new DetalleFacturaDTO;
+    
+    this.route.params.subscribe(params => {
+      this.codconsulta = parseInt(params['codigoConsulta']);
+    });
+
+    this.obtenerFactura();
+
   }
 
   public obtenerFactura(){
 
-    let codigoConsulta = 0;
-
-    this.medicoService.mostrarDetalleFactura(codigoConsulta).subscribe({
+    console.log(this.codconsulta)
+    this.medicoService.mostrarDetalleFactura(this.codconsulta).subscribe({
       next: data => {
         this.facturaDetalle = data.respuesta;
       },

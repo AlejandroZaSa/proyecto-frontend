@@ -19,12 +19,10 @@ export class GestionInfoPersonalComponent {
   eps: EpsDTO[];
   archivos!: FileList;
   alerta!: Alerta
-  datosPaciente: ActualizarPacienteDTO;
 
   pacienteActualizadoDTO: ActualizarPacienteDTO;
   constructor(private tokenService: TokenService, private pacienteService: PacienteService, private clinicaService: ClinicaService, private imagenService: ImagenService) {
     this.pacienteActualizadoDTO = new ActualizarPacienteDTO();
-    this.datosPaciente = new ActualizarPacienteDTO();
     this.ciudades = [];
     this.eps = [];
     this.cargarCiudades();
@@ -39,7 +37,7 @@ export class GestionInfoPersonalComponent {
 
       this.pacienteService.cargarDatosPacientePaciente(codigoPaciente).subscribe({
         next: data => {
-          this.datosPaciente = data.respuesta;
+          this.pacienteActualizadoDTO = data.respuesta;
         },
         error: error => {
           this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
@@ -73,12 +71,17 @@ export class GestionInfoPersonalComponent {
     this.pacienteService.eliminarCuenta(codigoPaciente).subscribe({
       next: data => {
         this.alerta = { mensaje: data.respuesta, tipo: "success" };
+        this.tokenService.logout();
       },
       error: error => {
         this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
       }
     });
 
+  }
+
+  public quitarFoto(){
+    this.pacienteActualizadoDTO.foto=""
   }
 
   private cargarCiudades() {

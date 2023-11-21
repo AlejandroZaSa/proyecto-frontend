@@ -21,7 +21,7 @@
 
             <input class="btn btn-primary" (click)="buscarConsultas()" type="submit" value="Buscar">
 
-            <table class="table">
+            <table class="table table-hover">
                 <thead class="text-center">
                     <tr>
                         <th scope="col" >Medico</th>
@@ -42,10 +42,10 @@
                             <p>{{item.fecha}}</p>
                         </td>
                         <td>
-                            <p>{{item.diagnostico}}</p>
+                            <p>{{item.notasMedico}}</p>
                         </td>
                         <td>
-                            <p>{{item.notasMedico}}</p>
+                            <p>{{item.diagnostico}}</p>
                         </td>
                          <td>
                             <div style="display: flex; justify-content: center">

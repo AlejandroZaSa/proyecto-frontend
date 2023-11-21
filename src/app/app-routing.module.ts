@@ -37,6 +37,11 @@ const routes: Routes = [
         }
     },
     {
+        path: "medico/factura/:codigoConsulta", component: FacturaComponent, canActivate: [RolesGuard], data: {
+            expectedRole: ["medico"]
+        }
+    },
+    {
         path: "paciente/consultas-paciente", component: ConsultasPacienteComponent, canActivate: [RolesGuard], data: {
             expectedRole: ["paciente"]
         }
@@ -64,19 +69,13 @@ const routes: Routes = [
     },
 
     {
-        path: "medico/consulta", component: ConsultaComponent, canActivate: [RolesGuard], data: {
+        path: "medico/consulta/:codigoCita/:codigoPaciente", component: ConsultaComponent, canActivate: [RolesGuard], data: {
             expectedRole: ["medico"]
         }
     },
 
     {
         path: "medico/dia-libre", component: DiaLibreComponent, canActivate: [RolesGuard], data: {
-            expectedRole: ["medico"]
-        }
-    },
-
-    {
-        path: "medico/factura", component: FacturaComponent, canActivate: [RolesGuard], data: {
             expectedRole: ["medico"]
         }
     },

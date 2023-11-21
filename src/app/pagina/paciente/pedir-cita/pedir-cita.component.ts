@@ -25,6 +25,7 @@ export class PedirCitaComponent {
   listaMedicoCitaDTO: ItemMedicoCitaDTO[];
   idMedico:number=0
   hora:string=""
+  selectedCheckboxCount: number = 0;
   
   constructor(private clinicaService: ClinicaService, private pacienteService: PacienteService, private tokenService: TokenService) {
     this.filtroCitaDTO = new FiltroCItaDTO;
@@ -39,8 +40,8 @@ export class PedirCitaComponent {
   }
 
   public seleccionarFila(item: any) {
-    this.idMedico = item.codigoMedico;
-    this.hora = item.hora;
+    //this.idMedico = item.codigoMedico;
+    //this.hora = item.hora;
   }
 
   public buscarCitas() {
@@ -71,8 +72,8 @@ export class PedirCitaComponent {
 
     let codigoPaciente = this.tokenService.getCodigo();
     this.citaDTO.idPaciente = codigoPaciente;
-    this.citaDTO.hora=this.hora;
-    this.citaDTO.idMedico=this.idMedico;
+   
+
     console.log(this.citaDTO.fecha);
     console.log(this.citaDTO.hora);
     console.log(this.citaDTO.idMedico);
@@ -112,6 +113,27 @@ export class PedirCitaComponent {
     } else {
       this.auxiliarCitas = this.citasPaciente.filter(c => c.fechaCita == this.fechaCitaSeleccionada);
     }
+  }
+
+  isButtonDisabled() {
+    return this.citaDTO.motivo.trim() === '' || this.selectedCheckboxCount !== 1;
+  }
+
+  public seleccionar(item:any) {
+    this.citaDTO.idMedico = item.codigoMedico;
+    this.citaDTO.hora = item.hora;
+    console.log(this.citaDTO.idMedico)
+    console.log(this.citaDTO.hora)
+  }
+
+  onCheckboxChange(event: any) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    this.selectedCheckboxCount = checkboxes.length;
+
+    if (this.selectedCheckboxCount > 1) {
+      event.target.checked = false;
+    }
+
   }
 
 }

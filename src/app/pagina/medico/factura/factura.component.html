@@ -6,11 +6,45 @@
     <div class="card-body p-5">
         <form>
             <div class="mb-3 row">
+                <label name="labelcodigo" class="col-sm-2 col-form-label">Codigo: </label>
 
-                <div class="col-sm-12">
-                    <textarea name="factura" class ="form-control" id="factura"></textarea>
+                <div class="col-sm-4">
+                 
+                    <input type="text" class="form-control" name="codigo" [(ngModel)]="facturaDetalle.codigo" [disabled]="inputDeshabilitado">
+                    
+                </div>              
+                
+            </div>
+
+            <div class="mb-3 row">
+                <label name="labelfecha" class="col-sm-2 col-form-label">Fecha: </label>
+
+                <div class="col-sm-4">
+                    <input type="text"  class="form-control" name="fecha" [(ngModel)]="facturaDetalle.fecha" [disabled]="inputDeshabilitado">
+                    
+                </div>
+                
+            </div>
+
+            <div class="mb-3 row">
+                <label name="labelvalor" class="col-sm-2 col-form-label">Valor: </label>
+                <div class="col-sm-4">
+                   
+                    <input type="text" class="form-control" name="valor" [(ngModel)]="facturaDetalle.valor" [disabled]="inputDeshabilitado">   
+                </div>   
+                
+
+            </div>
+
+            <div class="mb-3 row">
+                <label name="labelconcepto" class="col-sm-2 col-form-label">Concepto: </label>
+                <div class="col-sm-4">
+                    
+                    <input type="text" class="form-control" name="concepto" [(ngModel)]="facturaDetalle.concepto" [disabled]="inputDeshabilitado">
+                    
                 </div>
             </div>
+
         </form>
 
     </div>

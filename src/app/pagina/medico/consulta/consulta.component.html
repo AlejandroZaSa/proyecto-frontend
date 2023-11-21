@@ -12,7 +12,7 @@
                 </div>
             </div>
             <br>
-            <table class="table">
+            <table class="table table-hover">
                 <thead class="text-center">
                     <tr>
                         <th>Paciente</th>
@@ -39,7 +39,7 @@
                         </td>
                          <td>
                             <div style="display: flex; justify-content: center">
-                                <button routerLink="/tratamiento/{{item.idConsulta}}" type="submit" class="btn btn-outline-none"><i class="fa-solid fa-eye"></i></button>
+                              
                             </div>
                         </td>
                         <td>
@@ -65,7 +65,7 @@
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Observaciones: </label>
                 <div class="col-sm-10">
-                    <textarea name="observaciones" class="form-control" id="observaciones"></textarea>
+                    <textarea name="observaciones" class="form-control" [(ngModel)]="registroTratamiento.observaciones"  id="observaciones"></textarea>
 
                 </div>
             </div>
@@ -73,34 +73,44 @@
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label" for="medicamentos">Selecciona los medicamentos</label>
                 <div class="col-sm-3">
-                    <select name="medicamentos" class="form-select">
+                    <select name="medicamentos" class="form-select" [(ngModel)]="registroTratamiento.nombreMedicamento">
                         <option value="" selected>Seleccione un medicamento</option>
                         <option [value]="item" *ngFor="let item of medicamentos; index as i">{{item}}</option>
                     </select>
-                    <input type="text" class="form-control" placeholder="Ingrese la dosis">
+                    <input type="text" class="form-control" name="dosis" [(ngModel)]="registroTratamiento.dosis" placeholder="Ingrese la dosis">
                 </div>
             </div>
 
-            <input class="btn btn-primary" type="submit" value="Agregar">
-            <input class="btn btn-primary" type="submit" value="Actualizar">
+            <input class="btn btn-primary" (click)="agregarTratamiento()" type="submit" value="Agregar">
+            <input class="btn btn-primary" (click)="actualizarTratamiento()" type="submit" value="Actualizar">
             <div>
-                <table class="table">
+                <table class="table table-hover">
                     <thead class="text-center">
                         <tr>
-
+                            
                             <th>Medicamento</th>
                             <th>Dosis</th>
                             <th>Observaciones</th>
                         </tr>
                     </thead>
                     <tbody class="text-center table-group-divider">
-                        
+                        <tr *ngFor="let item of tratamiento; let i = index" (click)="seleccionarFila(item)">
+                            
+                            <td>
+                                <p>{{item.nombreMedicamento}}</p>
+                            </td>
+                            <td>
+                                <p>{{item.dosis}}</p>
+                            </td>
+                            <td>
+                                <p>{{item.observaciones}}</p>
+                            </td>
                     </tbody>
                 </table>
 
             </div>
             <div>
-                <input class="btn btn-primary" type="submit" value="Eliminar">
+                <input class="btn btn-primary" (click)="eliminarMedicamento()" type="submit" value="Eliminar">
             </div>
 
 
@@ -112,7 +122,8 @@
             </div>
             <div>
                 <input class="btn btn-primary" (click)="guardarHistoria()" type="submit" value="Guardar Historia">
-                <input class="btn btn-primary" (click)="generarFactura()" type="submit" value="Generar Factura">
+                <input class="btn btn-primary" (click)="generarFactura()"  type="submit" value="Generar Factura">
+                <input class="btn btn-primary" routerLink="/medico/factura/{{codConsulta}}"  type="submit" value="Ver factura"/>
             </div>
             <app-alerta [alerta]="alerta"></app-alerta>
         </form>

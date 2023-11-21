@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <table class="table">
+      <table class="table table-hover">
         <thead class="text-center">
           <tr>
             <th>Paciente</th>
@@ -39,7 +39,7 @@
             </td>
             <td>
               <div style="display: flex; justify-content: center">
-                <button type="submit" (click)="irAConsulta(item)" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button type="submit" routerLink="/medico/consulta/{{item.codigoCita}}/{{item.codigoPaciente}}" class="btn btn-outline-none"><i class="fa-solid fa-pen-to-square"></i></button>
               </div>
             </td>
           </tr>

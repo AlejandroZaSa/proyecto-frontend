@@ -7,19 +7,16 @@
              <div class="mb-3 row">
                 <label  class="col-sm-2 col-form-label"> Ingrese el nombre del medicamento:  </label>
                 <div class="col-sm-4">
-                    <input class="form-control"  type="text"  name="medicamento" [(ngModel)]="textoIngresado">
+                    <input class="form-control"  type="text" (input)="filtrarMedicamento($event)"  name="medicamento" [(ngModel)]="textoIngresado">
                 </div>
              </div>
-            <button class="btn btn-primary" type="submit" (click)="buscarTratamiento()">Buscar</button>
             <div>
-                <table class="table">
+                <table class="table table-hover">
                     <thead class="text-center">
                         <tr>
                             <th>Medicamento</th>
                             <th>Dosis</th>
-                            <th>Observaciones</th>
-                         
-                    
+                            <th>Observaciones</th>       
                     </thead>
                     <tbody class="table-group-divider text-center">
                         <tr *ngFor="let item of auxiliarTratamiento">

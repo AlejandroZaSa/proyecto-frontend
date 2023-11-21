@@ -10,7 +10,7 @@
                 <div class="col-sm-10">
                     <input #cedula="ngModel"
                         [ngClass]="cedula.invalid && (cedula.dirty || cedula.touched) ? 'is-invalid' : ''" type="text"
-                        name="cedula" class="form-control" required [(ngModel)]="pacienteActualizadoDTO.cedula" value="{{datosPaciente.cedula}}"/>
+                        name="cedula" class="form-control" required [(ngModel)]="pacienteActualizadoDTO.cedula" />
                 </div>
             </div>
             <div class="mb-3 row">
@@ -18,7 +18,7 @@
                 <div class="col-sm-10">
                     <input #nombre="ngModel"
                         [ngClass]="nombre.invalid && (nombre.dirty || nombre.touched) ? 'is-invalid' : ''" type="text"
-                        name="nombre" class="form-control" required [(ngModel)]="pacienteActualizadoDTO.nombre" value="{{datosPaciente.nombre}}"/>
+                        name="nombre" class="form-control" required [(ngModel)]="pacienteActualizadoDTO.nombre" />
                 </div>
             </div>
             <div class="mb-3 row">
@@ -27,7 +27,7 @@
                     <input #telefono="ngModel"
                         [ngClass]="telefono.invalid && (telefono.dirty || telefono.touched) ? 'is-invalid' : ''"
                         type="text" name="telefono" class="form-control" required="true" maxlength="10"
-                        [(ngModel)]="pacienteActualizadoDTO.telefono" value="{{datosPaciente.telefono}}"/>
+                        [(ngModel)]="pacienteActualizadoDTO.telefono" />
                 </div>
             </div>
             <div class="mb-3 row">
@@ -41,6 +41,19 @@
                     </button>
                 </div>
             </div>
+            <div class="mb-3 row">
+                <div style="text-align: center;">
+                    <img [src]="pacienteActualizadoDTO.foto" alt="Foto del paciente"
+                        style="width: 300px; height: 200px; object-fit: cover;">
+                </div>
+                
+            </div>
+            <div class="text-center">
+                <button type="submit" (click)="quitarFoto()" class="btn btn-danger">
+                    <i class="fa-solid fa-cloud-arrow-up me-2"></i>Quitar Foto
+                </button>
+            </div>
+           <br>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Ciudad: </label>
                 <div class="col-sm-10">
@@ -63,7 +76,7 @@
                 <div class="col-sm-10">
                     <input type="text" name="alergias" #alergias="ngModel"
                         [ngClass]="alergias.invalid && (alergias.dirty || alergias.touched) ? 'is-invalid' : ''"
-                        required="true" class="form-control" [(ngModel)]="pacienteActualizadoDTO.alergias" value="{{datosPaciente.alergias}}"/>
+                        required="true" class="form-control" [(ngModel)]="pacienteActualizadoDTO.alergias" />
                 </div>
 
             </div>
@@ -94,16 +107,17 @@
                     <input type="email" name="correo" #correo="ngModel"
                         [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''"
                         required="true" class="form-control" email="true" maxlength="50"
-                        [(ngModel)]="pacienteActualizadoDTO.email" value="{{datosPaciente.email}}"/>
+                        [(ngModel)]="pacienteActualizadoDTO.email" />
                 </div>
             </div>
-            
+
             <button class="btn btn-primary" (click)="actualizar()" type="submit" [disabled]="f.invalid">
                 Actualizar información
             </button>
-            <button class="btn btn-primary" (click)="eliminarCuenta()" type="submit">
+            <button class="btn btn-danger" (click)="eliminarCuenta()" type="submit">
                 Eliminar cuenta
             </button>
+            <app-alerta [alerta]="alerta"></app-alerta>
         </form>
     </div>
 </div>

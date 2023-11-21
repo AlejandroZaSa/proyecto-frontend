@@ -22,10 +22,6 @@ export class AgendaComponent {
     this.cargarAgenda();
   }
 
-   public irAConsulta(item:ItemCitaMedicoDTO){
-
-   }
-
   fechaSeleccionada: string = ''
 
   public cargarAgenda(){

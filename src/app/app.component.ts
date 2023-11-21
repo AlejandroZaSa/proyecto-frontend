@@ -11,11 +11,14 @@ export class AppComponent {
 
   isLogged = false;
   email: string = "";
+  rol:string = "";
   constructor(private tokenService: TokenService) { }
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLogged();
     if (this.isLogged) {
       this.email = this.tokenService.getEmail();
+      this.rol = this.tokenService.getRole();
+      console.log(this.rol)
     }
   }
   public logout() {

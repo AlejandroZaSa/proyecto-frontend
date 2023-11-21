@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Alerta } from 'src/app/modelo/alerta';
 import { ItemTratamientoDTO } from 'src/app/modelo/clinica/ItemTratamientoDTO';
+import { MedicoService } from 'src/app/servicios/medico.service';
 import { PacienteService } from 'src/app/servicios/paciente.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-tratamiento',
@@ -18,7 +20,7 @@ export class TratamientoComponent {
   tratamiento: ItemTratamientoDTO[];
   auxiliarTratamiento: ItemTratamientoDTO[];
 
-  constructor(private route: ActivatedRoute, private pacienteService: PacienteService) {
+  constructor(private route: ActivatedRoute, private pacienteService: PacienteService, private medicoService:MedicoService, private tokenService: TokenService) {
     this.route.params.subscribe(params => {
       this.codigoConsulta = params['codigoConsulta'];
       this.codonsulta = parseInt(this.codigoConsulta);
@@ -29,26 +31,38 @@ export class TratamientoComponent {
     this.cargarTramtamiento();
   }
 
-  public equalsIgnoreCase(str1: string, str2: string): boolean {
-    return str1.toLocaleLowerCase() === str2.toLocaleLowerCase();
+  public cargarTramtamiento() {
+
+    if(this.tokenService.getRole() == "paciente"){
+
+      this.pacienteService.verTratamiento(this.codonsulta).subscribe({
+        next: data => {
+          this.tratamiento = data.respuesta;
+          this.auxiliarTratamiento = Array.from(this.tratamiento)
+        },
+        error: error => {
+          this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+        }
+      });
+
+    }else{
+      this.medicoService.verTratamiento(this.codonsulta).subscribe({
+        next: data => {
+          this.tratamiento = data.respuesta;
+          this.auxiliarTratamiento = Array.from(this.tratamiento)
+        },
+        error: error => {
+          this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+        }
+      });
+      
+    }
+
   }
 
-  public buscarTratamiento() {
-    if (this.textoIngresado == "") {
-      this.auxiliarTratamiento = this.tratamiento;
-    } else {
-      this.auxiliarTratamiento = this.tratamiento.filter(t => this.equalsIgnoreCase(t.nombreMedicamento, this.textoIngresado) );
-    }
-  }
-  public cargarTramtamiento() {
-    this.pacienteService.verTratamiento(this.codonsulta).subscribe({
-      next: data => {
-        this.tratamiento = data.respuesta;
-        this.auxiliarTratamiento = Array.from(this.tratamiento)
-      },
-      error: error => {
-        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
-      }
-    });
+  public filtrarMedicamento(event: any) {
+    const nombre = event.target.value;
+    this.auxiliarTratamiento = this.tratamiento.filter(t => t.nombreMedicamento.toLowerCase().includes(nombre.toLowerCase()) );
+   
   }
 }

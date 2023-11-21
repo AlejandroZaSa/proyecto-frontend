@@ -51,7 +51,7 @@ export class ConsultasPacienteComponent {
         this.consultasPaciente = data.respuesta;
       },
       error: error => {
-        this.alerta = { mensaje: error.error, tipo: "danger" };
+        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
       }
     });
   }
